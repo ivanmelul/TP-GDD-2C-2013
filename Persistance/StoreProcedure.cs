@@ -1,0 +1,409 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Data;
+using System.Data.SqlClient;
+
+namespace Persistance
+{
+
+    public interface IMapable
+    {
+        public IMapable Map(SqlDataReader reader);
+        public List<MyParameter> UnMap(IMapable entity);
+    }
+
+    public class MyParameter
+    {
+        private SqlParameter parameter;
+
+        public SqlParameter Parameter
+        {
+            get { return parameter; }
+        }
+
+        public String Name
+        {
+            get { return parameter.ParameterName; }
+            set { parameter.ParameterName = CheckName(value); }
+        }
+
+        public Object Value
+        {
+            get { return parameter.Value; }
+            set 
+            {
+                if (value == null)
+                    throw new Exception("Null value. Use DBNull.");
+
+                parameter.Value = value; 
+            }
+        }
+
+        public DbType DbType
+        {
+            get { return parameter.DbType; }
+            set { parameter.DbType = value; }
+        }
+
+        public int Size
+        {
+            get { return parameter.Size; }
+            set { parameter.Size = value; }
+        }
+
+        public bool IsNullable
+        {
+            get { return parameter.IsNullable; }
+            set { parameter.IsNullable = value; }
+        }
+
+        public bool IsOutput
+        {
+            get { return parameter.Direction == ParameterDirection.Output; }
+            set { parameter.Direction = ParameterDirection.Output; }
+        }
+
+        public bool IsInput
+        {
+            get { return parameter.Direction == ParameterDirection.Input; }
+            set { parameter.Direction = ParameterDirection.Input; }
+        }
+
+        public bool IsInputOutput
+        {
+            get { return  parameter.Direction == ParameterDirection.InputOutput; }
+            set { parameter.Direction = ParameterDirection.InputOutput; }
+        }
+
+        public bool IsReturnValue
+        {
+            get { return parameter.Direction == ParameterDirection.ReturnValue; }
+            set { parameter.Direction = ParameterDirection.ReturnValue; }
+        }
+
+        public ParameterDirection Direction
+        {
+            get { return parameter.Direction; }
+            set { parameter.Direction = value; }
+        }
+
+        public MyParameter()
+        {
+            parameter = new SqlParameter();
+        }
+
+        public MyParameter(String paramName, Object value)
+        {
+            paramName = CheckName(paramName);
+
+            if (value == null)
+                throw new Exception("Null value. Use DBNull.");
+
+            parameter = new SqlParameter(paramName, value);
+        }
+
+        private String CheckName(String name)
+        {
+            if (String.IsNullOrEmpty(name))
+                throw new Exception("Null or Empty name.");
+
+            if (name.Substring(1).Contains('@'))
+                throw new Exception("Invalid name.");
+
+            if (!name.Contains('@'))
+                name = "@" + name;
+
+            return name;
+        }
+
+        public MyParameter Nullable()
+        {
+            IsNullable = true;
+            return this;
+        }
+
+        public MyParameter Output()
+        {
+            IsOutput = true;
+            return this;
+        }
+
+        public MyParameter Input()
+        {
+            IsInput = true;
+            return this;
+        }
+
+        public MyParameter InputOutput()
+        {
+            IsInputOutput = true;
+            return this;
+        }
+
+        public MyParameter ReturnValue()
+        {
+            IsReturnValue = true;
+            return this;
+        }
+
+    }
+
+    public class StoreProcedure
+    {
+        #region Fields
+
+        private String name;
+
+        public String Name
+        {
+            get { return name; }
+            set { name = value; }
+        }
+
+        private Dictionary<String, MyParameter> parameters;
+        
+        public Dictionary<String, MyParameter> Parameters
+        {
+            get { return parameters; }
+        }
+
+        private SqlTransaction transaction;
+
+        public SqlTransaction Transaction
+        {
+            get { return transaction; }
+        }
+
+        private DataBaseManager dataBaseManager;
+
+        #endregion
+
+        public StoreProcedure()
+        {
+            Initialize(String.Empty, null, null);
+        }
+
+        public StoreProcedure(String SP_Name)
+        {
+            Initialize(SP_Name, null, null);
+        }
+
+        public StoreProcedure(String SP_Name, List<MyParameter> SP_Parameters)
+        {
+            Initialize(SP_Name, SP_Parameters, null);
+        }
+
+        public StoreProcedure(String SP_Name, List<MyParameter> SP_Parameters, SqlTransaction SP_Transaction)
+        {
+            Initialize(SP_Name, SP_Parameters, SP_Transaction);
+        }
+
+        private void Initialize(String SP_Name, List<MyParameter> SP_Parameters, SqlTransaction SP_Transaction)
+        {
+            // Set the Name
+            if (String.IsNullOrEmpty(SP_Name))
+                name = String.Empty;
+            else
+                name = SP_Name;
+
+            // Set the Parameters
+            if (SP_Parameters == null || SP_Parameters.Count == 0)
+                parameters = new Dictionary<String, MyParameter>(0);
+            else
+            {
+                try
+                {
+                    parameters = SP_Parameters.ToDictionary(p => p.Name, p => p);
+                }
+                catch (Exception e)
+                {
+                    throw new Exception("There are parameters with the same name.");
+                }
+            }
+
+            // Set the Transaction
+            transaction = SP_Transaction;
+            
+            // Set the Connection
+            //dataBaseManager = DataBaseManager.Instance();
+        }
+
+        public bool HasParameters
+        {
+            get { return parameters.Count > 0; }
+        }
+
+        public bool HasTransaction
+        {
+            get { return transaction != null; }
+        }
+
+        public int ExecuteNonQuery()
+        {
+            SqlConnection conn = dataBaseManager.Connection;
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand(name, conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                
+                foreach (MyParameter parameter in parameters.Values)
+                {
+                    cmd.Parameters.Add(parameter);
+                }
+
+                return cmd.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        /*
+         * Remember to close SqlDataReader after.
+         */
+        public SqlDataReader ExecuteReader()
+        {            
+            SqlConnection conn = dataBaseManager.Connection;
+            
+            try
+            {
+                SqlCommand cmd = new SqlCommand(name, conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                foreach (MyParameter parameter in parameters.Values)
+                {
+                    cmd.Parameters.Add(parameter);
+                }
+
+                // Don't close the Reader
+                return cmd.ExecuteReader();                
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        // -- Tester --
+        public R ExecuteReader<T>()
+            where T: IMapable, new()
+            where R: IMapable
+        {
+            SqlConnection conn = dataBaseManager.Connection;
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand(name, conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                foreach (MyParameter parameter in parameters.Values)
+                {
+                    cmd.Parameters.Add(parameter);
+                }
+
+                // Don't close the Reader
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                T mapable = new T();
+                return mapable.Map(reader);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        // ------------
+
+        public Dictionary<String, Object> ExecuteOutput()
+        {
+            SqlConnection conn = dataBaseManager.Connection;
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand(name, conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                foreach (MyParameter parameter in parameters.Values)
+                {
+                    cmd.Parameters.Add(parameter);
+                }
+
+                cmd.ExecuteNonQuery();
+
+                return parameters.Values.Where(p => p.IsOutput || p.IsInputOutput).ToDictionary(p => p.Name, p => p.Value);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        public Object ExecuteScalar()
+        {
+            SqlConnection conn = dataBaseManager.Connection;
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand(name, conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                foreach (MyParameter parameter in parameters.Values)
+                {
+                    cmd.Parameters.Add(parameter);
+                }
+
+                return cmd.ExecuteScalar();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        public void ExecuteSQLQuery(string query)
+        {
+            SqlConnection conn = dataBaseManager.Connection;
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.CommandType = CommandType.Text;
+                
+                cmd.ExecuteNonQuery();
+                // No se cierra el Reader
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        public void ExecuteSQLQuery(string query, out SqlDataReader rdr)
+        {
+            rdr = null;
+
+            SqlConnection conn = dataBaseManager.Connection;
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandTimeout = 0;
+                rdr = cmd.ExecuteReader();
+                // No se cierra el Reader
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+
+    }
+
+}

@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clinica Frba", "Clinica Frba\Clinica Frba.csproj", "{71DE9239-635F-437B-BF7D-1D898AB408DD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entities", "Entities\Entities.csproj", "{9B2DF180-E2CA-4445-BE91-E3632427E968}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Persistance", "Persistance\Persistance.csproj", "{0CFDB4A9-DB76-46EE-9382-4A72175D4E4D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{71DE9239-635F-437B-BF7D-1D898AB408DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71DE9239-635F-437B-BF7D-1D898AB408DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71DE9239-635F-437B-BF7D-1D898AB408DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71DE9239-635F-437B-BF7D-1D898AB408DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B2DF180-E2CA-4445-BE91-E3632427E968}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B2DF180-E2CA-4445-BE91-E3632427E968}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B2DF180-E2CA-4445-BE91-E3632427E968}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B2DF180-E2CA-4445-BE91-E3632427E968}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0CFDB4A9-DB76-46EE-9382-4A72175D4E4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0CFDB4A9-DB76-46EE-9382-4A72175D4E4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0CFDB4A9-DB76-46EE-9382-4A72175D4E4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0CFDB4A9-DB76-46EE-9382-4A72175D4E4D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

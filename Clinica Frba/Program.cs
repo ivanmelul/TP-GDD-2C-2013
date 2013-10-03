@@ -1,0 +1,41 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Windows.Forms;
+using System.Globalization;
+using System.Configuration;
+using Persistance;
+using Configs;
+
+namespace Clinica_Frba
+{
+    static class Program
+    {
+        /// <summary>
+        /// The main entry point for the application.
+        /// </summary>
+        [STAThread]
+        static void Main()
+        {
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+
+            InitializeConfig();
+
+            // Primer Form
+            Application.Run(new Form1());
+        }
+
+        public static void InitializeConfig()
+        {
+            // Seteo la Conexion a la Base
+            DataBaseManager.ConnectionString = Utils.Configuration.GetDBValue("dataSource");
+
+            // Seteo el Culture de las Fechas y demas
+            Application.CurrentCulture = Utils.Configuration.SystemCulture;
+
+            // Seteo la Fecha del Sistema
+            Configs.Configuration.SystemDate = Utils.Configuration.SystemDate;
+        }
+    }
+}
