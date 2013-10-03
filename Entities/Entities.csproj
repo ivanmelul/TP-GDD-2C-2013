@@ -45,25 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Ciudad.cs" />
-    <Compile Include="Butaca.cs" />
-    <Compile Include="Compra.cs" />
-    <Compile Include="Canje.cs" />
-    <Compile Include="MicroFueraDeServicio.cs" />
-    <Compile Include="Producto.cs" />
-    <Compile Include="Devolucion.cs" />
-    <Compile Include="Pasaje.cs" />
-    <Compile Include="Micro.cs" />
-    <Compile Include="Viaje.cs" />
-    <Compile Include="Recorrido.cs" />
-    <Compile Include="Marca.cs" />
-    <Compile Include="Servicio.cs" />
-    <Compile Include="Persona.cs" />
-    <Compile Include="Funcionalidad.cs" />
-    <Compile Include="Rol.cs" />
-    <Compile Include="Entidad.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Usuario.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Configs\Configs.csproj">

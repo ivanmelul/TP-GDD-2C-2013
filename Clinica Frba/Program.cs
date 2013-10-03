@@ -5,7 +5,6 @@ using System.Windows.Forms;
 using System.Globalization;
 using System.Configuration;
 using Persistance;
-using Configs;
 
 namespace Clinica_Frba
 {
@@ -33,9 +32,6 @@ namespace Clinica_Frba
 
             // Seteo el Culture de las Fechas y demas
             Application.CurrentCulture = Utils.Configuration.SystemCulture;
-
-            // Seteo la Fecha del Sistema
-            Configs.Configuration.SystemDate = Utils.Configuration.SystemDate;
         }
     }
 }

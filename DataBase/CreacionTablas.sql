@@ -28,8 +28,8 @@ CREATE TABLE [SQUELA].[Afiliado]
 	[Sexo] [char](1) NULL,
 	[ID_EstadoCivil] [numeric](18, 0) NULL,
 	[ID_PlanMedico] [numeric](18, 0) NOT NULL,
-	[NumeroAfiliadoBase] [numeric](18, 0) NOT NULL,
-	[NumeroAfiliadoFamiliar] [numeric](2, 0) NOT NULL,
+	[NumeroAfiliadoBase] [numeric](18, 0) NOT NULL IDENTITY(1,1),
+	[NumeroAfiliadoFamiliar] [numeric](2, 0) NOT NULL DEFAULT 1,
 	UNIQUE ([NumeroAfiliadoBase], [NumeroAfiliadoFamiliar])
 )
 

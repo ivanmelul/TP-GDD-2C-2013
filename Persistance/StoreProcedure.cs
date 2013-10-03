@@ -4,17 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Data;
 using System.Data.SqlClient;
+using Persistance.Entities;
 
 namespace Persistance
 {
-
-    public interface IMapable
-    {
-        public IMapable Map(SqlDataReader reader);
-        public List<MyParameter> UnMap(IMapable entity);
-    }
-
-    public class MyParameter
+    public class SPParameter
     {
         private SqlParameter parameter;
 
@@ -32,12 +26,12 @@ namespace Persistance
         public Object Value
         {
             get { return parameter.Value; }
-            set 
+            set
             {
                 if (value == null)
                     throw new Exception("Null value. Use DBNull.");
 
-                parameter.Value = value; 
+                parameter.Value = value;
             }
         }
 
@@ -73,7 +67,7 @@ namespace Persistance
 
         public bool IsInputOutput
         {
-            get { return  parameter.Direction == ParameterDirection.InputOutput; }
+            get { return parameter.Direction == ParameterDirection.InputOutput; }
             set { parameter.Direction = ParameterDirection.InputOutput; }
         }
 
@@ -89,12 +83,12 @@ namespace Persistance
             set { parameter.Direction = value; }
         }
 
-        public MyParameter()
+        public SPParameter()
         {
             parameter = new SqlParameter();
         }
 
-        public MyParameter(String paramName, Object value)
+        public SPParameter(String paramName, Object value)
         {
             paramName = CheckName(paramName);
 
@@ -118,31 +112,31 @@ namespace Persistance
             return name;
         }
 
-        public MyParameter Nullable()
+        public SPParameter Nullable()
         {
             IsNullable = true;
             return this;
         }
 
-        public MyParameter Output()
+        public SPParameter Output()
         {
             IsOutput = true;
             return this;
         }
 
-        public MyParameter Input()
+        public SPParameter Input()
         {
             IsInput = true;
             return this;
         }
 
-        public MyParameter InputOutput()
+        public SPParameter InputOutput()
         {
             IsInputOutput = true;
             return this;
         }
 
-        public MyParameter ReturnValue()
+        public SPParameter ReturnValue()
         {
             IsReturnValue = true;
             return this;
@@ -162,9 +156,9 @@ namespace Persistance
             set { name = value; }
         }
 
-        private Dictionary<String, MyParameter> parameters;
-        
-        public Dictionary<String, MyParameter> Parameters
+        private Dictionary<String, SPParameter> parameters;
+
+        public Dictionary<String, SPParameter> Parameters
         {
             get { return parameters; }
         }
@@ -190,17 +184,17 @@ namespace Persistance
             Initialize(SP_Name, null, null);
         }
 
-        public StoreProcedure(String SP_Name, List<MyParameter> SP_Parameters)
+        public StoreProcedure(String SP_Name, List<SPParameter> SP_Parameters)
         {
             Initialize(SP_Name, SP_Parameters, null);
         }
 
-        public StoreProcedure(String SP_Name, List<MyParameter> SP_Parameters, SqlTransaction SP_Transaction)
+        public StoreProcedure(String SP_Name, List<SPParameter> SP_Parameters, SqlTransaction SP_Transaction)
         {
             Initialize(SP_Name, SP_Parameters, SP_Transaction);
         }
 
-        private void Initialize(String SP_Name, List<MyParameter> SP_Parameters, SqlTransaction SP_Transaction)
+        private void Initialize(String SP_Name, List<SPParameter> SP_Parameters, SqlTransaction SP_Transaction)
         {
             // Set the Name
             if (String.IsNullOrEmpty(SP_Name))
@@ -210,7 +204,7 @@ namespace Persistance
 
             // Set the Parameters
             if (SP_Parameters == null || SP_Parameters.Count == 0)
-                parameters = new Dictionary<String, MyParameter>(0);
+                parameters = new Dictionary<String, SPParameter>(0);
             else
             {
                 try
@@ -225,9 +219,9 @@ namespace Persistance
 
             // Set the Transaction
             transaction = SP_Transaction;
-            
+
             // Set the Connection
-            //dataBaseManager = DataBaseManager.Instance();
+            dataBaseManager = DataBaseManager.Instance();
         }
 
         public bool HasParameters
@@ -248,8 +242,8 @@ namespace Persistance
             {
                 SqlCommand cmd = new SqlCommand(name, conn);
                 cmd.CommandType = CommandType.StoredProcedure;
-                
-                foreach (MyParameter parameter in parameters.Values)
+
+                foreach (SPParameter parameter in parameters.Values)
                 {
                     cmd.Parameters.Add(parameter);
                 }
@@ -263,35 +257,10 @@ namespace Persistance
         }
 
         /*
+         * ExecuteReader(): Return the SqlDataReader
          * Remember to close SqlDataReader after.
          */
         public SqlDataReader ExecuteReader()
-        {            
-            SqlConnection conn = dataBaseManager.Connection;
-            
-            try
-            {
-                SqlCommand cmd = new SqlCommand(name, conn);
-                cmd.CommandType = CommandType.StoredProcedure;
-
-                foreach (MyParameter parameter in parameters.Values)
-                {
-                    cmd.Parameters.Add(parameter);
-                }
-
-                // Don't close the Reader
-                return cmd.ExecuteReader();                
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
-
-        // -- Tester --
-        public R ExecuteReader<T>()
-            where T: IMapable, new()
-            where R: IMapable
         {
             SqlConnection conn = dataBaseManager.Connection;
 
@@ -300,16 +269,13 @@ namespace Persistance
                 SqlCommand cmd = new SqlCommand(name, conn);
                 cmd.CommandType = CommandType.StoredProcedure;
 
-                foreach (MyParameter parameter in parameters.Values)
+                foreach (SPParameter parameter in parameters.Values)
                 {
                     cmd.Parameters.Add(parameter);
                 }
 
-                // Don't close the Reader
-                SqlDataReader reader = cmd.ExecuteReader();
-
-                T mapable = new T();
-                return mapable.Map(reader);
+                // Don't close the SqlDataReader
+                return cmd.ExecuteReader();
             }
             catch (Exception e)
             {
@@ -317,7 +283,68 @@ namespace Persistance
             }
         }
 
-        // ------------
+        /*
+         * ExecuteReader<T>(): Return the entities mapped
+         */
+        public List<T> ExecuteReader<T>()
+            where T : IMapable, new()
+        {
+            try
+            {
+                // Execute the SP and get the SqlDataReader
+                SqlDataReader reader = ExecuteReader();
+
+                // Map the Entities
+                List<T> map = new List<T>();
+
+                while (reader.Read())
+                {
+                    T mapable = new T();
+                    map.Add((T)mapable.Map(reader));
+                }
+
+                // Close the SqlDataReader
+                reader.Close();
+
+                return map;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        /*
+         * ExecuteReader(DelegateMap customMap): Return the entities with a custom Map
+         */
+        public delegate IMapable DelegateMap(SqlDataReader reader);
+
+        public List<IMapable> ExecuteReader(DelegateMap customMap)
+        {
+            try
+            {
+                // Execute the SP and get the SqlDataReader
+                SqlDataReader reader = ExecuteReader();
+
+                // Map the Entities
+                List<IMapable> map = new List<IMapable>();
+
+                while (reader.Read())
+                {
+                    map.Add(customMap(reader));
+                }
+
+                // Close the SqlDataReader
+                reader.Close();
+
+                return map;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
 
         public Dictionary<String, Object> ExecuteOutput()
         {
@@ -328,7 +355,7 @@ namespace Persistance
                 SqlCommand cmd = new SqlCommand(name, conn);
                 cmd.CommandType = CommandType.StoredProcedure;
 
-                foreach (MyParameter parameter in parameters.Values)
+                foreach (SPParameter parameter in parameters.Values)
                 {
                     cmd.Parameters.Add(parameter);
                 }
@@ -352,7 +379,7 @@ namespace Persistance
                 SqlCommand cmd = new SqlCommand(name, conn);
                 cmd.CommandType = CommandType.StoredProcedure;
 
-                foreach (MyParameter parameter in parameters.Values)
+                foreach (SPParameter parameter in parameters.Values)
                 {
                     cmd.Parameters.Add(parameter);
                 }
@@ -365,6 +392,10 @@ namespace Persistance
             }
         }
 
+        /*
+         * TODO: Query class
+         */
+
         public void ExecuteSQLQuery(string query)
         {
             SqlConnection conn = dataBaseManager.Connection;
@@ -373,7 +404,7 @@ namespace Persistance
             {
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.CommandType = CommandType.Text;
-                
+
                 cmd.ExecuteNonQuery();
                 // No se cierra el Reader
             }
