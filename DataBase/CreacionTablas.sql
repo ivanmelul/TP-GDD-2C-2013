@@ -14,6 +14,51 @@ END
 --					  --
 
 --
+-- Creacion Tabla Usuario
+--
+CREATE TABLE [SQUELA].Usuario(
+	ID_Usuario numeric(18,0) identity(1,1) primary key,
+	Usuario varchar(50) NOT NULL,
+	[Password] varchar(100) NOT NULL,
+	Habilitado bit NOT NULL DEFAULT 1,
+	LoginFails integer NOT NULL DEFAULT 0,
+	UNIQUE(Usuario)
+) 
+
+--
+-- Creacion Tabla Rol
+--
+CREATE TABLE [SQUELA].Rol(
+	ID_Rol numeric(18,0) identity(1,1) primary key,
+	Nombre varchar(50) NOT NULL,
+	Habilitado bit NOT NULL DEFAULT 1
+) 
+
+--
+-- Creacion Tabla RolXUsuario
+--
+CREATE TABLE [SQUELA].RolXUsuario(
+	ID_Usuario numeric(18,0) NOT NULL,
+	ID_Rol numeric(18,0) NOT NULL
+)
+
+--
+-- Creacion Tabla Funcionalidad
+--
+CREATE TABLE [SQUELA].Funcionalidad(
+	ID_Func numeric(18,0) identity(1,1) primary key,
+	Nombre varchar(50) NOT NULL
+) 
+
+--
+-- Creacion Tabla RolXFuncionalidad
+--
+CREATE TABLE [SQUELA].RolXFuncionalidad(
+	ID_Rol numeric(18,0) NOT NULL,
+	ID_Func numeric(18,0) NOT NULL
+)
+
+--
 -- Creacion Tabla Afiliado
 --
 CREATE TABLE [SQUELA].[Afiliado]
@@ -22,7 +67,7 @@ CREATE TABLE [SQUELA].[Afiliado]
 	[Apellido] [nvarchar](255) NOT NULL,
 	[DNI] [numeric](18, 0) NOT NULL PRIMARY KEY,
 	[Direccion] [nvarchar](255) NOT NULL,
-	[Telefono] [numeric](18, 0) NOT NULL,
+	[Telefono] [nvarchar](255) NOT NULL,
 	[Mail] [nvarchar](255) NOT NULL,
 	[FechaNacimiento] [datetime] NOT NULL,
 	[Sexo] [char](1) NULL,
@@ -42,10 +87,10 @@ CREATE TABLE [SQUELA].[Profesional]
 	[Apellido] [nvarchar](255) NOT NULL,
 	[DNI] [numeric](18, 0) NOT NULL PRIMARY KEY,
 	[Direccion] [nvarchar](255) NOT NULL,
-	[Telefono] [numeric](18, 0) NOT NULL,
+	[Telefono] [nvarchar](255) NOT NULL,
 	[Mail] [varchar](255) NOT NULL,
 	[FechaNacimiento] [datetime] NOT NULL,
-	[Matricula] [numeric](18, 0) NULL UNIQUE,
+	[Matricula] [varchar](255) NULL UNIQUE,
 	[Baja] [bit] NOT NULL DEFAULT 0,
 	[Sexo] [char](1) NULL
 )
@@ -345,3 +390,19 @@ ALTER TABLE [SQUELA].RecetaXBonoFarmacia
 --
 ALTER TABLE [SQUELA].RecetaXMedicamento
 	ADD FOREIGN KEY (ID_Receta) REFERENCES [SQUELA].Receta(ID_Receta)
+	
+--
+-- Foreign Key's RolXUsuario
+--
+ALTER TABLE [SQUELA].RolXUsuario
+	ADD FOREIGN KEY (ID_Usuario) REFERENCES [SQUELA].Usuario(ID_Usuario)
+ALTER TABLE [SQUELA].RolXUsuario
+	ADD FOREIGN KEY (ID_Rol) REFERENCES [SQUELA].Rol(ID_Rol)
+	
+--
+-- Foreign Key's RolXFuncionalidad
+--
+ALTER TABLE [SQUELA].RolXFuncionalidad
+	ADD FOREIGN KEY (ID_Rol) REFERENCES [SQUELA].Rol(ID_Rol)
+ALTER TABLE [SQUELA].RolXFuncionalidad 
+	ADD FOREIGN KEY (ID_Func) REFERENCES [SQUELA].Funcionalidad(ID_Func)

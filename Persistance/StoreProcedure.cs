@@ -345,7 +345,6 @@ namespace Persistance
             }
         }
 
-
         public Dictionary<String, Object> ExecuteOutput()
         {
             SqlConnection conn = dataBaseManager.Connection;
@@ -433,8 +432,5 @@ namespace Persistance
                 throw e;
             }
         }
-
-
     }
-
 }

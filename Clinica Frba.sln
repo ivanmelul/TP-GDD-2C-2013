@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
+# Visual C# Express 2008
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clinica Frba", "Clinica Frba\Clinica Frba.csproj", "{71DE9239-635F-437B-BF7D-1D898AB408DD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entities", "Entities\Entities.csproj", "{DBB99FCA-BC0C-4983-9C10-1F39354CFE7F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Persistance", "Persistance\Persistance.csproj", "{F202F12A-2539-4219-B3FE-D1A82C5DCD2B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logic", "Logic\Logic.csproj", "{9BE7353E-5433-4B1D-8838-6270F22E203A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,6 +27,10 @@ Global
 		{F202F12A-2539-4219-B3FE-D1A82C5DCD2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F202F12A-2539-4219-B3FE-D1A82C5DCD2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F202F12A-2539-4219-B3FE-D1A82C5DCD2B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9BE7353E-5433-4B1D-8838-6270F22E203A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9BE7353E-5433-4B1D-8838-6270F22E203A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9BE7353E-5433-4B1D-8838-6270F22E203A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9BE7353E-5433-4B1D-8838-6270F22E203A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

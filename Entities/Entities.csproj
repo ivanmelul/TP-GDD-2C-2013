@@ -45,6 +45,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Funcionalidad.cs" />
+    <Compile Include="Rol.cs" />
+    <Compile Include="Usuario.cs" />
+    <Compile Include="Especialidad.cs" />
+    <Compile Include="TipoCancelacion.cs" />
+    <Compile Include="Dia.cs" />
+    <Compile Include="TipoEspecialidad.cs" />
+    <Compile Include="Profesional.cs" />
+    <Compile Include="Entidad.cs" />
+    <Compile Include="EstadoCivil.cs" />
+    <Compile Include="PlanMedico.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
