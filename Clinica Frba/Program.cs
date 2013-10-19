@@ -22,7 +22,7 @@ namespace Clinica_Frba
             InitializeConfig();
 
             // Primer Form
-            Application.Run(new Form1());
+            Application.Run(new Home());
         }
 
         public static void InitializeConfig()

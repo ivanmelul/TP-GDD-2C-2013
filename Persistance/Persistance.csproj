@@ -55,6 +55,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RolPersistance.cs" />
     <Compile Include="StoreProcedure.cs" />
+    <Compile Include="UsuarioPersistance.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Configs\Configs.csproj">

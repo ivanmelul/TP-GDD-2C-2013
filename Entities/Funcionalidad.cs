@@ -12,6 +12,16 @@ namespace Entities
 
     public enum Funcionalidades
     {
-        ABM_Rol
+        ABM_Rol,
+        ABM_Afiliado,
+        ABM_Profesional,
+        Registro_Agenda,
+        Compra_Bono,
+        Pedido_Turno,
+        Registro_Llegada,
+        Registro_Resultado,
+        Cancelacion_Atencion,
+        Emision_Receta,
+        Estadisticas
     }
 }
