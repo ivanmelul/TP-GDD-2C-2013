@@ -124,3 +124,25 @@ SELECT DISTINCT
 	WHERE [Especialidad_Codigo] IS NOT NULL
 	
 SET IDENTITY_INSERT [SQUELA].[Especialidad] OFF
+
+
+--								--
+-- Migracion Tabla Compra       --
+--								--
+/*
+SET IDENTITY_INSERT [SQUELA].[Compra] ON
+
+INSERT INTO [SQUELA].[Compra]
+(
+	[ID_Compra],
+	[Fecha]
+)
+SELECT DISTINCT 
+    [Especialidad_Codigo] AS ID_Especialidad,
+    [Especialidad_Descripcion] AS Descripcion
+	FROM gd_esquema.Maestra
+	WHERE [Especialidad_Codigo] IS NOT NULL
+	
+SET IDENTITY_INSERT [SQUELA].[Especialidad] OFF
+
+*/
