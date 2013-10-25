@@ -75,6 +75,7 @@ CREATE TABLE [SQUELA].[Afiliado]
 	[ID_PlanMedico] [numeric](18, 0) NOT NULL,
 	[NumeroAfiliadoBase] [numeric](18, 0) NOT NULL IDENTITY(1,1),
 	[NumeroAfiliadoFamiliar] [numeric](2, 0) NOT NULL DEFAULT 1,
+	[FechaBaja] [datetime] NULL,
 	UNIQUE ([NumeroAfiliadoBase], [NumeroAfiliadoFamiliar])
 )
 
@@ -91,7 +92,7 @@ CREATE TABLE [SQUELA].[Profesional]
 	[Mail] [varchar](255) NOT NULL,
 	[FechaNacimiento] [datetime] NOT NULL,
 	[Matricula] [varchar](255) NULL UNIQUE,
-	[Baja] [bit] NOT NULL DEFAULT 0,
+	[FechaBaja] [datetime] NULL,
 	[Sexo] [char](1) NULL
 )
 
@@ -155,14 +156,13 @@ CREATE TABLE [SQUELA].[Agenda]
 )
 
 --
--- Creacion Tabla RangoDia
+-- Creacion Tabla HorarioXAgenda
 --
-CREATE TABLE [SQUELA].[RangoDia]
+CREATE TABLE [SQUELA].[HorarioXAgenda]
 (
 	[ID_Agenda] [numeric](18, 0) NOT NULL,
 	[ID_Dia] [numeric](18, 0) NOT NULL,
-	[Desde] [numeric](18, 0) NOT NULL,
-	[Hasta] [numeric](18, 0) NOT NULL
+	[ID_Horario] [numeric](18, 0) NOT NULL
 )
 
 --
@@ -217,7 +217,16 @@ CREATE TABLE [SQUELA].[Turno]
 	[ID_Profesional] [numeric](18, 0) NOT NULL,
 	[ID_Afiliado] [numeric](18, 0) NOT NULL,
 	[Fecha] [datetime] NOT NULL,
-	[Horario] [time](7) NOT NULL
+	[ID_Horario] [numeric](18,0) NOT NULL
+)
+
+--
+-- Creacion Tabla Horario
+--
+CREATE TABLE [SQUELA].[Horario]
+(
+	[ID_Horario] [numeric](18, 0) NOT NULL PRIMARY KEY,
+	[Hora] [time] NOT NULL
 )
 
 --
@@ -316,13 +325,15 @@ ALTER TABLE [SQUELA].Agenda
 	ADD FOREIGN KEY (ID_Profesional) REFERENCES [SQUELA].Profesional(DNI)
 	
 --
--- Foreign Key's RangoDia
+-- Foreign Key's HorarioXAgenda
 --
-ALTER TABLE [SQUELA].RangoDia
+ALTER TABLE [SQUELA].HorarioXAgenda
 	ADD FOREIGN KEY (ID_Agenda) REFERENCES [SQUELA].Agenda(ID_Agenda)
-ALTER TABLE [SQUELA].RangoDia
+ALTER TABLE [SQUELA].HorarioXAgenda
 	ADD FOREIGN KEY (ID_Dia) REFERENCES [SQUELA].Dia(ID_Dia)
-
+ALTER TABLE [SQUELA].HorarioXAgenda
+	ADD FOREIGN KEY (ID_Horario) REFERENCES [SQUELA].Horario(ID_Horario)
+	
 --
 -- Foreign Key's BonoConsulta
 --
@@ -354,6 +365,8 @@ ALTER TABLE [SQUELA].Turno
 	ADD FOREIGN KEY (ID_Profesional) REFERENCES [SQUELA].Profesional(DNI)
 ALTER TABLE [SQUELA].Turno
 	ADD FOREIGN KEY (ID_Afiliado) REFERENCES [SQUELA].Afiliado(DNI)
+ALTER TABLE [SQUELA].Turno
+	ADD FOREIGN KEY (ID_Horario) REFERENCES [SQUELA].Horario(ID_Horario)
 
 --
 -- Foreign Key's Consulta
