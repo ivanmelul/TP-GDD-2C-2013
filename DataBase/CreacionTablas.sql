@@ -80,6 +80,18 @@ CREATE TABLE [SQUELA].[Afiliado]
 )
 
 --
+-- Creacion Tabla BajaPlanXAfiliado
+--
+CREATE TABLE [SQUELA].[BajaPlanXAfiliado]
+(
+	[ID_Afiliado] [numeric](18, 0) NOT NULL,
+	[ID_PlanMedicoOrigen] [numeric](18, 0) NOT NULL,
+	[ID_PlanMedicoDestino] [numeric](18, 0) NOT NULL,
+	[Fecha] [datetime] NOT NULL,
+	[Motivo] [nvarchar](255) NOT NULL
+)
+
+--
 -- Creacion Tabla Profesional
 --
 CREATE TABLE [SQUELA].[Profesional]
@@ -225,7 +237,7 @@ CREATE TABLE [SQUELA].[Turno]
 --
 CREATE TABLE [SQUELA].[Horario]
 (
-	[ID_Horario] [numeric](18, 0) NOT NULL PRIMARY KEY,
+	[ID_Horario] [numeric](18, 0) NOT NULL IDENTITY(1,1) PRIMARY KEY,
 	[Hora] [time] NOT NULL
 )
 
@@ -419,3 +431,13 @@ ALTER TABLE [SQUELA].RolXFuncionalidad
 	ADD FOREIGN KEY (ID_Rol) REFERENCES [SQUELA].Rol(ID_Rol)
 ALTER TABLE [SQUELA].RolXFuncionalidad 
 	ADD FOREIGN KEY (ID_Func) REFERENCES [SQUELA].Funcionalidad(ID_Func)
+	
+--
+-- Foreign Key's BajaPlanXAfiliado
+--
+ALTER TABLE [SQUELA].BajaPlanXAfiliado
+	ADD FOREIGN KEY (ID_Afiliado) REFERENCES [SQUELA].Afiliado(DNI)
+ALTER TABLE [SQUELA].BajaPlanXAfiliado
+	ADD FOREIGN KEY (ID_PlanMedicoOrigen) REFERENCES [SQUELA].PlanMedico(ID_PlanMedico)
+ALTER TABLE [SQUELA].BajaPlanXAfiliado
+	ADD FOREIGN KEY (ID_PlanMedicoDestino) REFERENCES [SQUELA].PlanMedico(ID_PlanMedico)
