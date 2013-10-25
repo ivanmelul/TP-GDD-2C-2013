@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Logic;
-using Entities;
+using Persistance.Entities;
 
 namespace Clinica_Frba.Abm_Rol
 {

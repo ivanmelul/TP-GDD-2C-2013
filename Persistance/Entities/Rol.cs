@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Data.SqlClient;
 
-namespace Entities
+namespace Persistance.Entities
 {
     public class Rol : IMapable
     {
@@ -21,7 +21,8 @@ namespace Entities
             rol.ID = Int32.Parse(reader["Rol_ID"].ToString());
             rol.Name = ((String)reader["Rol_Nombre"]).Trim();
             rol.Habilitado = bool.Parse(reader["Rol_Habilitado"].ToString());
-            rol.Funcionalidades = null;
+
+            rol.Funcionalidades = new FuncionalidadPersistance().GetByRol(rol);
 
             return rol;
         }

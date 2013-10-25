@@ -4,14 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Data.SqlClient;
 
-namespace Entities
+namespace Persistance.Entities
 {
-    public class EstadoCivil : IMapable
+    public class Dia : IMapable
     {
         public int ID { get; set; }
         public string Nombre { get; set; }
 
-        public IMapable Map(SqlDataReader reader) { return new EstadoCivil(); }
+        //Implement of IMapable
+
+        public IMapable Map(SqlDataReader reader) { return new Dia(); }
         public List<SPParameter> UnMap(IMapable entity) { return new List<SPParameter>(); }
     }
 }

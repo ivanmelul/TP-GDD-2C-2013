@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Entities;
+using Persistance.Entities;
 using Persistance;
 
 namespace Logic

@@ -51,10 +51,6 @@
     <Compile Include="UsuarioLogic.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Entities\Entities.csproj">
-      <Project>{DBB99FCA-BC0C-4983-9C10-1F39354CFE7F}</Project>
-      <Name>Entities</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Persistance\Persistance.csproj">
       <Project>{F202F12A-2539-4219-B3FE-D1A82C5DCD2B}</Project>
       <Name>Persistance</Name>

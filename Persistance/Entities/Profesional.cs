@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Data.SqlClient;
 
-namespace Entities
+namespace Persistance.Entities
 {
     public class Profesional : IMapable
     {
