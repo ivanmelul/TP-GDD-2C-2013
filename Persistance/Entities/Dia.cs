@@ -13,7 +13,15 @@ namespace Persistance.Entities
 
         //Implement of IMapable
 
-        public IMapable Map(SqlDataReader reader) { return new Dia(); }
+        public IMapable Map(SqlDataReader reader)
+        {
+            Dia toReturn = new Dia();
+
+            toReturn.ID = Int32.Parse(reader["Dia_ID"].ToString());
+            toReturn.Nombre = reader["Dia_Nombre"].ToString();
+
+            return toReturn;
+        }
         public List<SPParameter> UnMap(IMapable entity) { return new List<SPParameter>(); }
     }
 }

@@ -31,5 +31,10 @@ namespace Persistance
             public static String SP_GetUserByUsername = "SQUELA.GetUserByUsername";
             public static String SP_UpdateUser = "SQUELA.UpdateUser";
         }
+
+        public static class Especialidad
+        {
+            public static String SP_GetAllEspecialidadByProfesional = "SQUELA.GetAllEspecialidadByProfesiona";
+        }
     }
 }

@@ -48,8 +48,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EspecialidadPersistance.cs" />
     <Compile Include="DataBaseConst.cs" />
     <Compile Include="DataBaseManager.cs" />
+    <Compile Include="Entities\Horario.cs" />
     <Compile Include="Entities\Dia.cs" />
     <Compile Include="Entities\Especialidad.cs" />
     <Compile Include="Entities\EstadoCivil.cs" />

@@ -9,7 +9,7 @@ using System.Windows.Forms;
 using Persistance.Entities;
 using Logic;
 
-namespace Clinica_Frba.NewFolder10
+namespace Clinica_Frba.Login
 {
     public partial class frmLogin : Form
     {
@@ -66,6 +66,11 @@ namespace Clinica_Frba.NewFolder10
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void BtnCliente_Click_1(object sender, EventArgs e)
+        {
+
         }
 
     }

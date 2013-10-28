@@ -120,7 +120,7 @@ namespace Clinica_Frba
 
         private void BtnLogout_Click(object sender, EventArgs e)
         {
-            Clinica_Frba.NewFolder10.frmLogin login = new Clinica_Frba.NewFolder10.frmLogin();
+            Clinica_Frba.Login.frmLogin login = new Clinica_Frba.Login.frmLogin();
             login.Show();
             this.Hide();
         }

@@ -135,6 +135,7 @@ namespace Persistance
 
                 foreach (SPParameter parameter in parameters.Values)
                 {
+                    SqlParameter param = new SqlParameter();
                     cmd.Parameters.Add(parameter);
                 }
 

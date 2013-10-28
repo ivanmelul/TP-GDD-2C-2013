@@ -1,0 +1,2 @@
+GetAllEspecialidadByProfesional (@profesionalDNI int)
+GetAllProfesional

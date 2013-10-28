@@ -19,8 +19,36 @@ namespace Persistance.Entities
         public string Matricula { get; set; }
         public bool Baja { get; set; }
         public Sexo Sexo { get; set; }
+        public DateTime? FechaBaja { get; set; }
+        public bool EsBaja { get { return !FechaBaja.HasValue; } }
 
-        public IMapable Map(SqlDataReader reader) { return new Profesional(); }
+        List<Especialidad> Especialidades { get; set; }
+
+        public IMapable Map(SqlDataReader reader)
+        {
+            Profesional toReturn = new Profesional();
+
+            toReturn.DNI = Int32.Parse(reader["Profesional_DNI"].ToString());
+            toReturn.Nombre = reader["Profesional_Nombre"].ToString();
+            toReturn.Apellido= reader["Profesional_Apellido"].ToString();
+            toReturn.Direccion = reader["Profesional_Direccion"].ToString();
+            toReturn.Telefono = reader["Profesional_Telefono"].ToString();
+            toReturn.Mail = reader["Profesional_Mail"].ToString();
+            toReturn.FechaNacimiento = DateTime.Parse(reader["PlanMedico_FechaNacimiento"].ToString());
+            toReturn.Matricula = reader["Profesional_Matricula"].ToString();
+
+            DateTime fechaBaja;
+            if (DateTime.TryParse(reader["Profesional_FechaBaja"].ToString(), out fechaBaja))
+                toReturn.FechaBaja = fechaBaja;
+            else
+                toReturn.FechaBaja = null;
+
+            toReturn.Sexo = reader["Profesional_Sexo"].ToString().ToUpper() == "M" ? Sexo.Masculino : Sexo.Femenino;
+
+            toReturn.Especialidades = new EspecialidadPersistance().GetByProfesional(toReturn);
+
+            return toReturn;
+        }
         public List<SPParameter> UnMap(IMapable entity) { return new List<SPParameter>(); }
     }
 

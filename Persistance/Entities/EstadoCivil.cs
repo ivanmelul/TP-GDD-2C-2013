@@ -11,7 +11,15 @@ namespace Persistance.Entities
         public int ID { get; set; }
         public string Nombre { get; set; }
 
-        public IMapable Map(SqlDataReader reader) { return new EstadoCivil(); }
+        public IMapable Map(SqlDataReader reader)
+        {
+            EstadoCivil toReturn = new EstadoCivil();
+
+            toReturn.ID = Int32.Parse(reader["EstadoCivil_ID"].ToString());
+            toReturn.Nombre = reader["EstadoCivil_Nombre"].ToString();
+
+            return toReturn;
+        }
         public List<SPParameter> UnMap(IMapable entity) { return new List<SPParameter>(); }
     }
 }

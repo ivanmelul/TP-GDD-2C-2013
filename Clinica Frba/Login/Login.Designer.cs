@@ -1,4 +1,4 @@
-﻿namespace Clinica_Frba.NewFolder10
+﻿namespace Clinica_Frba.Login
 {
     partial class frmLogin
     {
@@ -61,6 +61,7 @@
             this.BtnCliente.TabIndex = 5;
             this.BtnCliente.Text = "Soy cliente";
             this.BtnCliente.UseVisualStyleBackColor = true;
+            this.BtnCliente.Click += new System.EventHandler(this.BtnCliente_Click_1);
             // 
             // BtnLogin
             // 
@@ -79,6 +80,7 @@
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(175, 20);
             this.txtPassword.TabIndex = 3;
+            this.txtPassword.Text = "w23e";
             // 
             // label2
             // 
@@ -95,6 +97,7 @@
             this.txtUser.Name = "txtUser";
             this.txtUser.Size = new System.Drawing.Size(175, 20);
             this.txtUser.TabIndex = 1;
+            this.txtUser.Text = "admin";
             // 
             // label1
             // 
