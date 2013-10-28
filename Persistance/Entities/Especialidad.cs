@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Data.SqlClient;
 
-namespace Entities
+namespace Persistance.Entities
 {
     public class Especialidad : IMapable
     {
@@ -14,7 +14,16 @@ namespace Entities
 
         //Implement of IMapable
 
-        public IMapable Map(SqlDataReader reader) { return new Especialidad(); }
+        public IMapable Map(SqlDataReader reader)
+        {
+            Especialidad toReturn = new Especialidad();
+
+            toReturn.ID = Int32.Parse(reader["Especialidad_ID"].ToString());
+            toReturn.Descripcion = reader["Especialidad_Descripcion"].ToString();
+            toReturn.TipoEspecialidad = (TipoEspecialidad) new TipoEspecialidad().Map(reader);
+
+            return toReturn;
+        }
         public List<SPParameter> UnMap(IMapable entity) { return new List<SPParameter>(); }
     }
 

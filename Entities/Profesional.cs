@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Data.SqlClient;
 
 namespace Entities
 {
-    public class Profesional
+    public class Profesional : IMapable
     {
         public string Nombre { get; set; }
         public string Apellido { get; set; }
@@ -18,6 +19,9 @@ namespace Entities
         public string Matricula { get; set; }
         public bool Baja { get; set; }
         public Sexo Sexo { get; set; }
+
+        public IMapable Map(SqlDataReader reader) { return new Profesional(); }
+        public List<SPParameter> UnMap(IMapable entity) { return new List<SPParameter>(); }
     }
 
     public enum Sexo { 

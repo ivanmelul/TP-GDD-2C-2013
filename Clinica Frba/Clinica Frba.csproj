@@ -200,10 +200,6 @@
     <Compile Include="Utils\Validator.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Entities\Entities.csproj">
-      <Project>{DBB99FCA-BC0C-4983-9C10-1F39354CFE7F}</Project>
-      <Name>Entities</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Logic\Logic.csproj">
       <Project>{9BE7353E-5433-4B1D-8838-6270F22E203A}</Project>
       <Name>Logic</Name>

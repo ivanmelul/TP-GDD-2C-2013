@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Entities;
+using Persistance.Entities;
 using Persistance;
 
 namespace Logic
@@ -65,7 +65,7 @@ namespace Logic
         {
             try
             {
-                nuevo = persistance.InsertRole(nuevo);
+                nuevo = persistance.InsertRol(nuevo);
 
                 funcionalidadLogic.InsertByRol(nuevo);
             }
@@ -81,7 +81,7 @@ namespace Logic
         {
             try
             {
-                persistance.UpdateRole(nuevo);
+                persistance.UpdateRol(nuevo);
 
                 funcionalidadLogic.UpdateByRol(nuevo);
             }
@@ -98,7 +98,7 @@ namespace Logic
             try
             {
                 rol.Habilitado = false;
-                persistance.UpdateRole(rol);
+                persistance.UpdateRol(rol);
                 return true;
             }
             catch (Exception e)
