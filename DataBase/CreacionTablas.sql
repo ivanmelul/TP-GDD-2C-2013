@@ -17,7 +17,7 @@ END
 -- Creacion Tabla Usuario
 --
 CREATE TABLE [SQUELA].Usuario(
-	ID_Usuario numeric(18,0) identity(1,1) primary key,
+	ID_Usuario numeric(18,0) IDENTITY(1,1) PRIMARY KEY,
 	Usuario varchar(50) NOT NULL,
 	[Password] varchar(100) NOT NULL,
 	Habilitado bit NOT NULL DEFAULT 1,
@@ -29,7 +29,7 @@ CREATE TABLE [SQUELA].Usuario(
 -- Creacion Tabla Rol
 --
 CREATE TABLE [SQUELA].Rol(
-	ID_Rol numeric(18,0) identity(1,1) primary key,
+	ID_Rol numeric(18,0) IDENTITY(1,1) PRIMARY KEY,
 	Nombre varchar(50) NOT NULL,
 	Habilitado bit NOT NULL DEFAULT 1
 ) 
@@ -46,7 +46,7 @@ CREATE TABLE [SQUELA].RolXUsuario(
 -- Creacion Tabla Funcionalidad
 --
 CREATE TABLE [SQUELA].Funcionalidad(
-	ID_Func numeric(18,0) identity(1,1) primary key,
+	ID_Func numeric(18,0) IDENTITY(1,1) PRIMARY KEY,
 	Nombre varchar(50) NOT NULL
 ) 
 
@@ -59,13 +59,24 @@ CREATE TABLE [SQUELA].RolXFuncionalidad(
 )
 
 --
+-- Creacion Tabla TipoDocumento
+--
+CREATE TABLE [SQUELA].[TipoDocumento]
+(
+	[ID_TipoDocumento] [numeric] (18, 0) IDENTITY(1,1) PRIMARY KEY,
+	[Tipo] [nvarchar](255) NOT NULL
+)
+
+--
 -- Creacion Tabla Afiliado
 --
 CREATE TABLE [SQUELA].[Afiliado]
 (
+	[ID_Afiliado] [numeric] (18, 0) IDENTITY(1,1) PRIMARY KEY,
 	[Nombre] [nvarchar](255) NOT NULL,
 	[Apellido] [nvarchar](255) NOT NULL,
-	[DNI] [numeric](18, 0) NOT NULL PRIMARY KEY,
+	[ID_TipoDocumento] [numeric](18, 0) NOT NULL,
+	[Numero] [numeric](18, 0) NOT NULL,
 	[Direccion] [nvarchar](255) NOT NULL,
 	[Telefono] [nvarchar](255) NOT NULL,
 	[Mail] [nvarchar](255) NOT NULL,
@@ -76,7 +87,8 @@ CREATE TABLE [SQUELA].[Afiliado]
 	[NumeroAfiliadoBase] [numeric](18, 0) NOT NULL IDENTITY(1,1),
 	[NumeroAfiliadoFamiliar] [numeric](2, 0) NOT NULL DEFAULT 1,
 	[FechaBaja] [datetime] NULL,
-	UNIQUE ([NumeroAfiliadoBase], [NumeroAfiliadoFamiliar])
+	UNIQUE ([NumeroAfiliadoBase], [NumeroAfiliadoFamiliar]),
+	UNIQUE ([ID_TipoDocumento],[Numero])
 )
 
 --
@@ -96,16 +108,19 @@ CREATE TABLE [SQUELA].[BajaPlanXAfiliado]
 --
 CREATE TABLE [SQUELA].[Profesional]
 (
+	[ID_Profesional] [numeric] (18, 0) IDENTITY(1,1) PRIMARY KEY,
 	[Nombre] [nvarchar](255) NOT NULL,
 	[Apellido] [nvarchar](255) NOT NULL,
-	[DNI] [numeric](18, 0) NOT NULL PRIMARY KEY,
+	[ID_TipoDocumento] [numeric](18, 0) NOT NULL,
+	[Numero] [numeric](18, 0) NOT NULL,
 	[Direccion] [nvarchar](255) NOT NULL,
 	[Telefono] [nvarchar](255) NOT NULL,
 	[Mail] [varchar](255) NOT NULL,
 	[FechaNacimiento] [datetime] NOT NULL,
 	[Matricula] [varchar](255) NULL UNIQUE,
 	[FechaBaja] [datetime] NULL,
-	[Sexo] [char](1) NULL
+	[Sexo] [char](1) NULL,
+	UNIQUE ([ID_TipoDocumento],[Numero])
 )
 
 --
@@ -315,12 +330,20 @@ ALTER TABLE [SQUELA].Afiliado
 	ADD FOREIGN KEY (ID_EstadoCivil) REFERENCES [SQUELA].EstadoCivil(ID_EstadoCivil)
 ALTER TABLE [SQUELA].Afiliado
 	ADD FOREIGN KEY (ID_PlanMedico) REFERENCES [SQUELA].PlanMedico(ID_PlanMedico)
+ALTER TABLE [SQUELA].Afiliado
+	ADD FOREIGN KEY (ID_TipoDocumento) REFERENCES [SQUELA].TipoDocumento(ID_TipoDocumento)
+
+--
+-- Foreign Key's Profesionales
+--
+ALTER TABLE [SQUELA].Profesional
+	ADD FOREIGN KEY (ID_TipoDocumento) REFERENCES [SQUELA].TipoDocumento(ID_TipoDocumento)
 
 --
 -- Foreign Key's ProfesionalXEspecialidad
 --
 ALTER TABLE [SQUELA].ProfesionalXEspecialidad
-	ADD FOREIGN KEY (ID_Profesional) REFERENCES [SQUELA].Profesional(DNI)
+	ADD FOREIGN KEY (ID_Profesional) REFERENCES [SQUELA].Profesional(ID_Profesional)
 ALTER TABLE [SQUELA].ProfesionalXEspecialidad
 	ADD FOREIGN KEY (ID_Especialidad) REFERENCES [SQUELA].Especialidad(ID_Especialidad)
 
@@ -334,7 +357,7 @@ ALTER TABLE [SQUELA].Especialidad
 -- Foreign Key's Agenda
 --
 ALTER TABLE [SQUELA].Agenda
-	ADD FOREIGN KEY (ID_Profesional) REFERENCES [SQUELA].Profesional(DNI)
+	ADD FOREIGN KEY (ID_Profesional) REFERENCES [SQUELA].Profesional(ID_Profesional)
 	
 --
 -- Foreign Key's HorarioXAgenda
@@ -354,9 +377,9 @@ ALTER TABLE [SQUELA].BonoConsulta
 ALTER TABLE [SQUELA].BonoConsulta
 	ADD FOREIGN KEY (ID_PlanMedico) REFERENCES [SQUELA].PlanMedico(ID_PlanMedico)
 ALTER TABLE [SQUELA].BonoConsulta
-	ADD FOREIGN KEY (ID_Comprador) REFERENCES [SQUELA].Afiliado(DNI)
+	ADD FOREIGN KEY (ID_Comprador) REFERENCES [SQUELA].Afiliado(ID_Afiliado)
 ALTER TABLE [SQUELA].BonoConsulta
-	ADD FOREIGN KEY (ID_Consumidor) REFERENCES [SQUELA].Afiliado(DNI)	
+	ADD FOREIGN KEY (ID_Consumidor) REFERENCES [SQUELA].Afiliado(ID_Afiliado)	
 
 --
 -- Foreign Key's BonoFarmacia
@@ -366,17 +389,17 @@ ALTER TABLE [SQUELA].BonoFarmacia
 ALTER TABLE [SQUELA].BonoFarmacia
 	ADD FOREIGN KEY (ID_PlanMedico) REFERENCES [SQUELA].PlanMedico(ID_PlanMedico)
 ALTER TABLE [SQUELA].BonoFarmacia
-	ADD FOREIGN KEY (ID_Comprador) REFERENCES [SQUELA].Afiliado(DNI)
+	ADD FOREIGN KEY (ID_Comprador) REFERENCES [SQUELA].Afiliado(ID_Afiliado)
 ALTER TABLE [SQUELA].BonoFarmacia
-	ADD FOREIGN KEY (ID_Consumidor) REFERENCES [SQUELA].Afiliado(DNI)
+	ADD FOREIGN KEY (ID_Consumidor) REFERENCES [SQUELA].Afiliado(ID_Afiliado)
 	
 --
 -- Foreign Key's Turno
 --
 ALTER TABLE [SQUELA].Turno
-	ADD FOREIGN KEY (ID_Profesional) REFERENCES [SQUELA].Profesional(DNI)
+	ADD FOREIGN KEY (ID_Profesional) REFERENCES [SQUELA].Profesional(ID_Profesional)
 ALTER TABLE [SQUELA].Turno
-	ADD FOREIGN KEY (ID_Afiliado) REFERENCES [SQUELA].Afiliado(DNI)
+	ADD FOREIGN KEY (ID_Afiliado) REFERENCES [SQUELA].Afiliado(ID_Afiliado)
 ALTER TABLE [SQUELA].Turno
 	ADD FOREIGN KEY (ID_Horario) REFERENCES [SQUELA].Horario(ID_Horario)
 
@@ -436,7 +459,7 @@ ALTER TABLE [SQUELA].RolXFuncionalidad
 -- Foreign Key's BajaPlanXAfiliado
 --
 ALTER TABLE [SQUELA].BajaPlanXAfiliado
-	ADD FOREIGN KEY (ID_Afiliado) REFERENCES [SQUELA].Afiliado(DNI)
+	ADD FOREIGN KEY (ID_Afiliado) REFERENCES [SQUELA].Afiliado(ID_Afiliado)
 ALTER TABLE [SQUELA].BajaPlanXAfiliado
 	ADD FOREIGN KEY (ID_PlanMedicoOrigen) REFERENCES [SQUELA].PlanMedico(ID_PlanMedico)
 ALTER TABLE [SQUELA].BajaPlanXAfiliado

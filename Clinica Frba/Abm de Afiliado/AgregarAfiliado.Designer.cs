@@ -1,6 +1,6 @@
-﻿namespace Clinica_Frba.NewFolder12
+﻿namespace Clinica_Frba.Abm_de_Afiliado
 {
-    partial class FormAltaAfiliado
+    partial class AgregarAfiliado
     {
         /// <summary>
         /// Required designer variable.
@@ -28,12 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.BtnClean = new System.Windows.Forms.Button();
-            this.BtnCreate = new System.Windows.Forms.Button();
             this.GbAfiliado = new System.Windows.Forms.GroupBox();
+            this.BtnSearch = new System.Windows.Forms.Button();
             this.CmbPlanMedico = new System.Windows.Forms.ComboBox();
+            this.TxtApellido = new System.Windows.Forms.TextBox();
+            this.LblNombre = new System.Windows.Forms.Label();
             this.LblPlanMedico = new System.Windows.Forms.Label();
+            this.LblApellido = new System.Windows.Forms.Label();
             this.TxtCantidadFamiliares = new System.Windows.Forms.MaskedTextBox();
+            this.TxtNombre = new System.Windows.Forms.TextBox();
             this.LblCantidadHijos = new System.Windows.Forms.Label();
             this.CmbEstadoCivil = new System.Windows.Forms.ComboBox();
             this.LblEstadoCivil = new System.Windows.Forms.Label();
@@ -42,46 +45,30 @@
             this.LblSexo = new System.Windows.Forms.Label();
             this.LblFechaNacimiento = new System.Windows.Forms.Label();
             this.DtpFechaNacimiento = new System.Windows.Forms.DateTimePicker();
+            this.TxtTelefono = new System.Windows.Forms.TextBox();
             this.TxtDireccion = new System.Windows.Forms.TextBox();
             this.MskTxtNumero = new System.Windows.Forms.MaskedTextBox();
-            this.TxtApellido = new System.Windows.Forms.TextBox();
-            this.TxtNombre = new System.Windows.Forms.TextBox();
             this.LblTelefono = new System.Windows.Forms.Label();
             this.LblDireccion = new System.Windows.Forms.Label();
             this.LblNumero = new System.Windows.Forms.Label();
             this.CmbTipo = new System.Windows.Forms.ComboBox();
             this.LblTipo = new System.Windows.Forms.Label();
-            this.LblApellido = new System.Windows.Forms.Label();
-            this.LblNombre = new System.Windows.Forms.Label();
-            this.MskTxtTelefono = new System.Windows.Forms.MaskedTextBox();
+            this.BtnAddFamiliar = new System.Windows.Forms.Button();
+            this.BtnCancel = new System.Windows.Forms.Button();
+            this.BtnAddPareja = new System.Windows.Forms.Button();
             this.GbAfiliado.SuspendLayout();
             this.SuspendLayout();
             // 
-            // BtnClean
-            // 
-            this.BtnClean.Location = new System.Drawing.Point(174, 359);
-            this.BtnClean.Name = "BtnClean";
-            this.BtnClean.Size = new System.Drawing.Size(75, 38);
-            this.BtnClean.TabIndex = 10;
-            this.BtnClean.Text = "Limpiar";
-            this.BtnClean.UseVisualStyleBackColor = true;
-            // 
-            // BtnCreate
-            // 
-            this.BtnCreate.Location = new System.Drawing.Point(93, 359);
-            this.BtnCreate.Name = "BtnCreate";
-            this.BtnCreate.Size = new System.Drawing.Size(75, 38);
-            this.BtnCreate.TabIndex = 9;
-            this.BtnCreate.Text = "Alta";
-            this.BtnCreate.UseVisualStyleBackColor = true;
-            this.BtnCreate.Click += new System.EventHandler(this.BtnCreate_Click);
-            // 
             // GbAfiliado
             // 
-            this.GbAfiliado.Controls.Add(this.MskTxtTelefono);
+            this.GbAfiliado.Controls.Add(this.BtnSearch);
             this.GbAfiliado.Controls.Add(this.CmbPlanMedico);
+            this.GbAfiliado.Controls.Add(this.TxtApellido);
+            this.GbAfiliado.Controls.Add(this.LblNombre);
             this.GbAfiliado.Controls.Add(this.LblPlanMedico);
+            this.GbAfiliado.Controls.Add(this.LblApellido);
             this.GbAfiliado.Controls.Add(this.TxtCantidadFamiliares);
+            this.GbAfiliado.Controls.Add(this.TxtNombre);
             this.GbAfiliado.Controls.Add(this.LblCantidadHijos);
             this.GbAfiliado.Controls.Add(this.CmbEstadoCivil);
             this.GbAfiliado.Controls.Add(this.LblEstadoCivil);
@@ -90,23 +77,29 @@
             this.GbAfiliado.Controls.Add(this.LblSexo);
             this.GbAfiliado.Controls.Add(this.LblFechaNacimiento);
             this.GbAfiliado.Controls.Add(this.DtpFechaNacimiento);
+            this.GbAfiliado.Controls.Add(this.TxtTelefono);
             this.GbAfiliado.Controls.Add(this.TxtDireccion);
             this.GbAfiliado.Controls.Add(this.MskTxtNumero);
-            this.GbAfiliado.Controls.Add(this.TxtApellido);
-            this.GbAfiliado.Controls.Add(this.TxtNombre);
             this.GbAfiliado.Controls.Add(this.LblTelefono);
             this.GbAfiliado.Controls.Add(this.LblDireccion);
             this.GbAfiliado.Controls.Add(this.LblNumero);
             this.GbAfiliado.Controls.Add(this.CmbTipo);
             this.GbAfiliado.Controls.Add(this.LblTipo);
-            this.GbAfiliado.Controls.Add(this.LblApellido);
-            this.GbAfiliado.Controls.Add(this.LblNombre);
             this.GbAfiliado.Location = new System.Drawing.Point(12, 12);
             this.GbAfiliado.Name = "GbAfiliado";
-            this.GbAfiliado.Size = new System.Drawing.Size(325, 341);
-            this.GbAfiliado.TabIndex = 8;
+            this.GbAfiliado.Size = new System.Drawing.Size(384, 341);
+            this.GbAfiliado.TabIndex = 9;
             this.GbAfiliado.TabStop = false;
             this.GbAfiliado.Text = "Datos del Afiliado";
+            // 
+            // BtnSearch
+            // 
+            this.BtnSearch.Location = new System.Drawing.Point(299, 29);
+            this.BtnSearch.Name = "BtnSearch";
+            this.BtnSearch.Size = new System.Drawing.Size(75, 47);
+            this.BtnSearch.TabIndex = 1;
+            this.BtnSearch.Text = "Buscar";
+            this.BtnSearch.UseVisualStyleBackColor = true;
             // 
             // CmbPlanMedico
             // 
@@ -115,7 +108,23 @@
             this.CmbPlanMedico.Location = new System.Drawing.Point(146, 299);
             this.CmbPlanMedico.Name = "CmbPlanMedico";
             this.CmbPlanMedico.Size = new System.Drawing.Size(146, 21);
-            this.CmbPlanMedico.TabIndex = 25;
+            this.CmbPlanMedico.TabIndex = 12;
+            // 
+            // TxtApellido
+            // 
+            this.TxtApellido.Location = new System.Drawing.Point(146, 112);
+            this.TxtApellido.Name = "TxtApellido";
+            this.TxtApellido.Size = new System.Drawing.Size(146, 20);
+            this.TxtApellido.TabIndex = 3;
+            // 
+            // LblNombre
+            // 
+            this.LblNombre.AutoSize = true;
+            this.LblNombre.Location = new System.Drawing.Point(26, 94);
+            this.LblNombre.Name = "LblNombre";
+            this.LblNombre.Size = new System.Drawing.Size(44, 13);
+            this.LblNombre.TabIndex = 0;
+            this.LblNombre.Text = "Nombre";
             // 
             // LblPlanMedico
             // 
@@ -126,6 +135,15 @@
             this.LblPlanMedico.TabIndex = 24;
             this.LblPlanMedico.Text = "Plan Medico";
             // 
+            // LblApellido
+            // 
+            this.LblApellido.AutoSize = true;
+            this.LblApellido.Location = new System.Drawing.Point(26, 121);
+            this.LblApellido.Name = "LblApellido";
+            this.LblApellido.Size = new System.Drawing.Size(44, 13);
+            this.LblApellido.TabIndex = 2;
+            this.LblApellido.Text = "Apellido";
+            // 
             // TxtCantidadFamiliares
             // 
             this.TxtCantidadFamiliares.Enabled = false;
@@ -133,8 +151,15 @@
             this.TxtCantidadFamiliares.Mask = "99";
             this.TxtCantidadFamiliares.Name = "TxtCantidadFamiliares";
             this.TxtCantidadFamiliares.Size = new System.Drawing.Size(146, 20);
-            this.TxtCantidadFamiliares.TabIndex = 22;
+            this.TxtCantidadFamiliares.TabIndex = 11;
             this.TxtCantidadFamiliares.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // TxtNombre
+            // 
+            this.TxtNombre.Location = new System.Drawing.Point(146, 86);
+            this.TxtNombre.Name = "TxtNombre";
+            this.TxtNombre.Size = new System.Drawing.Size(146, 20);
+            this.TxtNombre.TabIndex = 2;
             // 
             // LblCantidadHijos
             // 
@@ -152,7 +177,7 @@
             this.CmbEstadoCivil.Location = new System.Drawing.Point(146, 245);
             this.CmbEstadoCivil.Name = "CmbEstadoCivil";
             this.CmbEstadoCivil.Size = new System.Drawing.Size(146, 21);
-            this.CmbEstadoCivil.TabIndex = 20;
+            this.CmbEstadoCivil.TabIndex = 10;
             // 
             // LblEstadoCivil
             // 
@@ -169,7 +194,7 @@
             this.RdoFemenino.Location = new System.Drawing.Point(223, 222);
             this.RdoFemenino.Name = "RdoFemenino";
             this.RdoFemenino.Size = new System.Drawing.Size(71, 17);
-            this.RdoFemenino.TabIndex = 19;
+            this.RdoFemenino.TabIndex = 9;
             this.RdoFemenino.TabStop = true;
             this.RdoFemenino.Text = "Femenino";
             this.RdoFemenino.UseVisualStyleBackColor = true;
@@ -180,7 +205,7 @@
             this.RdoMasculino.Location = new System.Drawing.Point(149, 222);
             this.RdoMasculino.Name = "RdoMasculino";
             this.RdoMasculino.Size = new System.Drawing.Size(73, 17);
-            this.RdoMasculino.TabIndex = 18;
+            this.RdoMasculino.TabIndex = 8;
             this.RdoMasculino.TabStop = true;
             this.RdoMasculino.Text = "Masculino";
             this.RdoMasculino.UseVisualStyleBackColor = true;
@@ -209,38 +234,31 @@
             this.DtpFechaNacimiento.Location = new System.Drawing.Point(146, 194);
             this.DtpFechaNacimiento.Name = "DtpFechaNacimiento";
             this.DtpFechaNacimiento.Size = new System.Drawing.Size(146, 20);
-            this.DtpFechaNacimiento.TabIndex = 15;
+            this.DtpFechaNacimiento.TabIndex = 7;
+            // 
+            // TxtTelefono
+            // 
+            this.TxtTelefono.Location = new System.Drawing.Point(146, 167);
+            this.TxtTelefono.Name = "TxtTelefono";
+            this.TxtTelefono.Size = new System.Drawing.Size(146, 20);
+            this.TxtTelefono.TabIndex = 6;
             // 
             // TxtDireccion
             // 
             this.TxtDireccion.Location = new System.Drawing.Point(146, 141);
             this.TxtDireccion.Name = "TxtDireccion";
             this.TxtDireccion.Size = new System.Drawing.Size(146, 20);
-            this.TxtDireccion.TabIndex = 13;
+            this.TxtDireccion.TabIndex = 5;
             // 
             // MskTxtNumero
             // 
             this.MskTxtNumero.Enabled = false;
-            this.MskTxtNumero.Location = new System.Drawing.Point(146, 115);
+            this.MskTxtNumero.Location = new System.Drawing.Point(146, 56);
             this.MskTxtNumero.Mask = "99999999";
             this.MskTxtNumero.Name = "MskTxtNumero";
             this.MskTxtNumero.Size = new System.Drawing.Size(146, 20);
-            this.MskTxtNumero.TabIndex = 0;
+            this.MskTxtNumero.TabIndex = 1;
             this.MskTxtNumero.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // TxtApellido
-            // 
-            this.TxtApellido.Location = new System.Drawing.Point(146, 60);
-            this.TxtApellido.Name = "TxtApellido";
-            this.TxtApellido.Size = new System.Drawing.Size(146, 20);
-            this.TxtApellido.TabIndex = 12;
-            // 
-            // TxtNombre
-            // 
-            this.TxtNombre.Location = new System.Drawing.Point(146, 34);
-            this.TxtNombre.Name = "TxtNombre";
-            this.TxtNombre.Size = new System.Drawing.Size(146, 20);
-            this.TxtNombre.TabIndex = 11;
             // 
             // LblTelefono
             // 
@@ -263,7 +281,7 @@
             // LblNumero
             // 
             this.LblNumero.AutoSize = true;
-            this.LblNumero.Location = new System.Drawing.Point(26, 123);
+            this.LblNumero.Location = new System.Drawing.Point(26, 64);
             this.LblNumero.Name = "LblNumero";
             this.LblNumero.Size = new System.Drawing.Size(44, 13);
             this.LblNumero.TabIndex = 6;
@@ -273,58 +291,60 @@
             // 
             this.CmbTipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CmbTipo.FormattingEnabled = true;
-            this.CmbTipo.Location = new System.Drawing.Point(146, 88);
+            this.CmbTipo.Location = new System.Drawing.Point(146, 29);
             this.CmbTipo.Name = "CmbTipo";
             this.CmbTipo.Size = new System.Drawing.Size(146, 21);
-            this.CmbTipo.TabIndex = 2;
+            this.CmbTipo.TabIndex = 0;
             // 
             // LblTipo
             // 
             this.LblTipo.AutoSize = true;
-            this.LblTipo.Location = new System.Drawing.Point(26, 96);
+            this.LblTipo.Location = new System.Drawing.Point(26, 37);
             this.LblTipo.Name = "LblTipo";
             this.LblTipo.Size = new System.Drawing.Size(28, 13);
             this.LblTipo.TabIndex = 4;
             this.LblTipo.Text = "Tipo";
             // 
-            // LblApellido
+            // BtnAddFamiliar
             // 
-            this.LblApellido.AutoSize = true;
-            this.LblApellido.Location = new System.Drawing.Point(26, 69);
-            this.LblApellido.Name = "LblApellido";
-            this.LblApellido.Size = new System.Drawing.Size(44, 13);
-            this.LblApellido.TabIndex = 2;
-            this.LblApellido.Text = "Apellido";
+            this.BtnAddFamiliar.Location = new System.Drawing.Point(111, 359);
+            this.BtnAddFamiliar.Name = "BtnAddFamiliar";
+            this.BtnAddFamiliar.Size = new System.Drawing.Size(75, 41);
+            this.BtnAddFamiliar.TabIndex = 13;
+            this.BtnAddFamiliar.Text = "Agregar";
+            this.BtnAddFamiliar.UseVisualStyleBackColor = true;
+            this.BtnAddFamiliar.Click += new System.EventHandler(this.BtnAddFamiliar_Click);
             // 
-            // LblNombre
+            // BtnCancel
             // 
-            this.LblNombre.AutoSize = true;
-            this.LblNombre.Location = new System.Drawing.Point(26, 42);
-            this.LblNombre.Name = "LblNombre";
-            this.LblNombre.Size = new System.Drawing.Size(44, 13);
-            this.LblNombre.TabIndex = 0;
-            this.LblNombre.Text = "Nombre";
+            this.BtnCancel.Location = new System.Drawing.Point(192, 359);
+            this.BtnCancel.Name = "BtnCancel";
+            this.BtnCancel.Size = new System.Drawing.Size(75, 41);
+            this.BtnCancel.TabIndex = 14;
+            this.BtnCancel.Text = "Cancelar";
+            this.BtnCancel.UseVisualStyleBackColor = true;
             // 
-            // MskTxtTelefono
+            // BtnAddPareja
             // 
-            this.MskTxtTelefono.Enabled = false;
-            this.MskTxtTelefono.Location = new System.Drawing.Point(146, 167);
-            this.MskTxtTelefono.Mask = "9999-9999";
-            this.MskTxtTelefono.Name = "MskTxtTelefono";
-            this.MskTxtTelefono.Size = new System.Drawing.Size(146, 20);
-            this.MskTxtTelefono.TabIndex = 26;
-            this.MskTxtTelefono.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.BtnAddPareja.Location = new System.Drawing.Point(111, 359);
+            this.BtnAddPareja.Name = "BtnAddPareja";
+            this.BtnAddPareja.Size = new System.Drawing.Size(75, 41);
+            this.BtnAddPareja.TabIndex = 15;
+            this.BtnAddPareja.Text = "Agregar";
+            this.BtnAddPareja.UseVisualStyleBackColor = true;
+            this.BtnAddPareja.Click += new System.EventHandler(this.BtnAddPareja_Click);
             // 
-            // FormAltaAfiliado
+            // AgregarAfiliado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(354, 414);
-            this.Controls.Add(this.BtnClean);
-            this.Controls.Add(this.BtnCreate);
+            this.ClientSize = new System.Drawing.Size(409, 421);
+            this.Controls.Add(this.BtnAddPareja);
+            this.Controls.Add(this.BtnCancel);
+            this.Controls.Add(this.BtnAddFamiliar);
             this.Controls.Add(this.GbAfiliado);
-            this.Name = "FormAltaAfiliado";
-            this.Text = "Alta Afiliado";
+            this.Name = "AgregarAfiliado";
+            this.Text = "AgregarAfiliado";
             this.GbAfiliado.ResumeLayout(false);
             this.GbAfiliado.PerformLayout();
             this.ResumeLayout(false);
@@ -333,31 +353,33 @@
 
         #endregion
 
-        private System.Windows.Forms.Button BtnClean;
-        private System.Windows.Forms.Button BtnCreate;
         private System.Windows.Forms.GroupBox GbAfiliado;
-        private System.Windows.Forms.MaskedTextBox MskTxtNumero;
-        private System.Windows.Forms.Label LblTelefono;
-        private System.Windows.Forms.Label LblDireccion;
-        private System.Windows.Forms.Label LblNumero;
-        private System.Windows.Forms.ComboBox CmbTipo;
-        private System.Windows.Forms.Label LblTipo;
-        private System.Windows.Forms.Label LblApellido;
-        private System.Windows.Forms.Label LblNombre;
-        private System.Windows.Forms.TextBox TxtNombre;
+        private System.Windows.Forms.Button BtnSearch;
+        private System.Windows.Forms.ComboBox CmbPlanMedico;
         private System.Windows.Forms.TextBox TxtApellido;
-        private System.Windows.Forms.TextBox TxtDireccion;
-        private System.Windows.Forms.Label LblFechaNacimiento;
-        private System.Windows.Forms.DateTimePicker DtpFechaNacimiento;
+        private System.Windows.Forms.Label LblNombre;
+        private System.Windows.Forms.Label LblPlanMedico;
+        private System.Windows.Forms.Label LblApellido;
         private System.Windows.Forms.MaskedTextBox TxtCantidadFamiliares;
+        private System.Windows.Forms.TextBox TxtNombre;
         private System.Windows.Forms.Label LblCantidadHijos;
         private System.Windows.Forms.ComboBox CmbEstadoCivil;
         private System.Windows.Forms.Label LblEstadoCivil;
         private System.Windows.Forms.RadioButton RdoFemenino;
         private System.Windows.Forms.RadioButton RdoMasculino;
         private System.Windows.Forms.Label LblSexo;
-        private System.Windows.Forms.ComboBox CmbPlanMedico;
-        private System.Windows.Forms.Label LblPlanMedico;
-        private System.Windows.Forms.MaskedTextBox MskTxtTelefono;
+        private System.Windows.Forms.Label LblFechaNacimiento;
+        private System.Windows.Forms.DateTimePicker DtpFechaNacimiento;
+        private System.Windows.Forms.TextBox TxtTelefono;
+        private System.Windows.Forms.TextBox TxtDireccion;
+        private System.Windows.Forms.MaskedTextBox MskTxtNumero;
+        private System.Windows.Forms.Label LblTelefono;
+        private System.Windows.Forms.Label LblDireccion;
+        private System.Windows.Forms.Label LblNumero;
+        private System.Windows.Forms.ComboBox CmbTipo;
+        private System.Windows.Forms.Label LblTipo;
+        private System.Windows.Forms.Button BtnAddFamiliar;
+        private System.Windows.Forms.Button BtnCancel;
+        private System.Windows.Forms.Button BtnAddPareja;
     }
 }

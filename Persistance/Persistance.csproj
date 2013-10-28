@@ -48,6 +48,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\Afiliado.cs" />
+    <Compile Include="Entities\TipoDocumento.cs" />
     <Compile Include="EspecialidadPersistance.cs" />
     <Compile Include="DataBaseConst.cs" />
     <Compile Include="DataBaseManager.cs" />

@@ -1,2 +1,5 @@
-GetAllEspecialidadByProfesional (@profesionalDNI int)
+GetAllEspecialidadByProfesional (@profesionalID int)
 GetAllProfesional
+GetAllTipoDocumento
+GetAllEstadoCivil
+GetAllPlanMedico

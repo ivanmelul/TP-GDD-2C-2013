@@ -8,27 +8,30 @@ namespace Persistance.Entities
 {
     public class Profesional : IMapable
     {
+        public int ID { get; set; }
         public string Nombre { get; set; }
         public string Apellido { get; set; }
         public string DisplayName { get { return string.Format("{0} {1}", Nombre, Apellido); } }
-        public int DNI { get; set; }
+        public TipoDocumento TipoDocumento { get; set; }
+        public int Numero { get; set; }
         public string Direccion { get; set; }
         public string Telefono { get; set; }
         public string Mail { get; set; }
         public DateTime FechaNacimiento { get; set; }
         public string Matricula { get; set; }
-        public bool Baja { get; set; }
         public Sexo Sexo { get; set; }
         public DateTime? FechaBaja { get; set; }
         public bool EsBaja { get { return !FechaBaja.HasValue; } }
 
-        List<Especialidad> Especialidades { get; set; }
+        public List<Especialidad> Especialidades { get; set; }
 
         public IMapable Map(SqlDataReader reader)
         {
             Profesional toReturn = new Profesional();
 
-            toReturn.DNI = Int32.Parse(reader["Profesional_DNI"].ToString());
+            toReturn.ID = Int32.Parse(reader["Profesional_ID"].ToString());
+            toReturn.Numero = Int32.Parse(reader["Profesional_Numero"].ToString());
+            toReturn.TipoDocumento = (TipoDocumento) new TipoDocumento().Map(reader);
             toReturn.Nombre = reader["Profesional_Nombre"].ToString();
             toReturn.Apellido= reader["Profesional_Apellido"].ToString();
             toReturn.Direccion = reader["Profesional_Direccion"].ToString();
@@ -49,6 +52,7 @@ namespace Persistance.Entities
 
             return toReturn;
         }
+
         public List<SPParameter> UnMap(IMapable entity) { return new List<SPParameter>(); }
     }
 

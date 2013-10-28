@@ -7,12 +7,12 @@ namespace Clinica_Frba.Utils
 {
     public class Validator
     {
-        public static bool CheckEmptyOrNull(String str)
+        public static String CheckEmptyOrNull(String str)
         {
             if (String.IsNullOrEmpty(str))
-                throw new Exception("Cadena nula o vacia.");
+                throw new Exception("Cadena nula o vacia. Verifique los campos.");
 
-            return true;
+            return str;
         }
 
         public static int CheckInt(String str)
@@ -25,6 +25,14 @@ namespace Clinica_Frba.Utils
                 return aux;
             else
                 throw new Exception("La cadena '" + aux + "' no es un numero entero valido.");
+        }
+
+        public static DateTime CheckDateTimeBeforeThanSystem(DateTime date)
+        {
+            if (Configuration.SystemDate >= date)
+                throw new Exception("Fecha invalida.");
+
+            return date;
         }
 
     }
