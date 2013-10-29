@@ -25,8 +25,8 @@ namespace Clinica_Frba.NewFolder12
         {
             try
             {
-                Afiliado afiliado = new Afiliado(); 
-                
+                Afiliado afiliado = new Afiliado();
+
                 afiliado.Nombre = Validator.CheckEmptyOrNull(TxtNombre.Text);
 
                 afiliado.Apellido = Validator.CheckEmptyOrNull(TxtApellido.Text);
@@ -42,6 +42,7 @@ namespace Clinica_Frba.NewFolder12
 
                 afiliado.FechaNacimiento = Validator.CheckDateTimeBeforeThanSystem(DtpFechaNacimiento.Value);
             }
+            catch (Exception e) { }
         }
 
         private void BtnCreate_Click(object sender, EventArgs e)

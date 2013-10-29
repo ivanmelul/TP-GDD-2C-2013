@@ -33,7 +33,7 @@ VALUES ('Admin', 'E6-B8-70-50-BF-CB-81-43-FC-B8-DB-01-70-A4-DC-9E-D0-0D-90-4D-DD
 --Asignacion rol Administrador a usuarios
 DECLARE @userId int
 
-SELECT @roleId = [ID_Rol] FROM [SQUELA].Rol WHERE [Nombre] = 'Afiliado'
+SELECT @roleId = [ID_Rol] FROM [SQUELA].Rol WHERE [Nombre] = 'Administrativo'
 
 SELECT @userId = [ID_Usuario] FROM [SQUELA].Usuario WHERE [Usuario] = 'Admin'
 INSERT INTO [SQUELA].RolXUsuario([ID_Usuario], [ID_Rol]) VALUES (@userId,@roleId)

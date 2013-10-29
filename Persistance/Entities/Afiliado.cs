@@ -50,6 +50,9 @@ namespace Persistance.Entities
             else
                 toReturn.FechaBaja = null;
 
+            toReturn.NumeroAfiliadoBase = int.Parse(reader["Afiliado_NumeroBase"].ToString());
+            toReturn.NumeroAfiliadoFamiliar = int.Parse(reader["Afiliado_NumeroFamiliar"].ToString());
+
             return toReturn;
         }
 
