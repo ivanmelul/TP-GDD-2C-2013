@@ -31,6 +31,7 @@
             this.BtnClean = new System.Windows.Forms.Button();
             this.BtnCreate = new System.Windows.Forms.Button();
             this.GbAfiliado = new System.Windows.Forms.GroupBox();
+            this.MskTxtTelefono = new System.Windows.Forms.MaskedTextBox();
             this.CmbPlanMedico = new System.Windows.Forms.ComboBox();
             this.LblPlanMedico = new System.Windows.Forms.Label();
             this.TxtCantidadFamiliares = new System.Windows.Forms.MaskedTextBox();
@@ -53,7 +54,6 @@
             this.LblTipo = new System.Windows.Forms.Label();
             this.LblApellido = new System.Windows.Forms.Label();
             this.LblNombre = new System.Windows.Forms.Label();
-            this.MskTxtTelefono = new System.Windows.Forms.MaskedTextBox();
             this.GbAfiliado.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -107,6 +107,16 @@
             this.GbAfiliado.TabIndex = 8;
             this.GbAfiliado.TabStop = false;
             this.GbAfiliado.Text = "Datos del Afiliado";
+            // 
+            // MskTxtTelefono
+            // 
+            this.MskTxtTelefono.Enabled = false;
+            this.MskTxtTelefono.Location = new System.Drawing.Point(146, 167);
+            this.MskTxtTelefono.Mask = "9999-9999";
+            this.MskTxtTelefono.Name = "MskTxtTelefono";
+            this.MskTxtTelefono.Size = new System.Drawing.Size(146, 20);
+            this.MskTxtTelefono.TabIndex = 26;
+            this.MskTxtTelefono.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // CmbPlanMedico
             // 
@@ -283,9 +293,9 @@
             this.LblTipo.AutoSize = true;
             this.LblTipo.Location = new System.Drawing.Point(26, 96);
             this.LblTipo.Name = "LblTipo";
-            this.LblTipo.Size = new System.Drawing.Size(28, 13);
+            this.LblTipo.Size = new System.Drawing.Size(86, 13);
             this.LblTipo.TabIndex = 4;
-            this.LblTipo.Text = "Tipo";
+            this.LblTipo.Text = "Tipo Documento";
             // 
             // LblApellido
             // 
@@ -304,16 +314,6 @@
             this.LblNombre.Size = new System.Drawing.Size(44, 13);
             this.LblNombre.TabIndex = 0;
             this.LblNombre.Text = "Nombre";
-            // 
-            // MskTxtTelefono
-            // 
-            this.MskTxtTelefono.Enabled = false;
-            this.MskTxtTelefono.Location = new System.Drawing.Point(146, 167);
-            this.MskTxtTelefono.Mask = "9999-9999";
-            this.MskTxtTelefono.Name = "MskTxtTelefono";
-            this.MskTxtTelefono.Size = new System.Drawing.Size(146, 20);
-            this.MskTxtTelefono.TabIndex = 26;
-            this.MskTxtTelefono.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // FormAltaAfiliado
             // 

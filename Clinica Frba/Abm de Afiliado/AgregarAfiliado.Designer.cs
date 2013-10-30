@@ -29,15 +29,10 @@
         private void InitializeComponent()
         {
             this.GbAfiliado = new System.Windows.Forms.GroupBox();
-            this.BtnSearch = new System.Windows.Forms.Button();
-            this.CmbPlanMedico = new System.Windows.Forms.ComboBox();
             this.TxtApellido = new System.Windows.Forms.TextBox();
             this.LblNombre = new System.Windows.Forms.Label();
-            this.LblPlanMedico = new System.Windows.Forms.Label();
             this.LblApellido = new System.Windows.Forms.Label();
-            this.TxtCantidadFamiliares = new System.Windows.Forms.MaskedTextBox();
             this.TxtNombre = new System.Windows.Forms.TextBox();
-            this.LblCantidadHijos = new System.Windows.Forms.Label();
             this.CmbEstadoCivil = new System.Windows.Forms.ComboBox();
             this.LblEstadoCivil = new System.Windows.Forms.Label();
             this.RdoFemenino = new System.Windows.Forms.RadioButton();
@@ -61,15 +56,10 @@
             // 
             // GbAfiliado
             // 
-            this.GbAfiliado.Controls.Add(this.BtnSearch);
-            this.GbAfiliado.Controls.Add(this.CmbPlanMedico);
             this.GbAfiliado.Controls.Add(this.TxtApellido);
             this.GbAfiliado.Controls.Add(this.LblNombre);
-            this.GbAfiliado.Controls.Add(this.LblPlanMedico);
             this.GbAfiliado.Controls.Add(this.LblApellido);
-            this.GbAfiliado.Controls.Add(this.TxtCantidadFamiliares);
             this.GbAfiliado.Controls.Add(this.TxtNombre);
-            this.GbAfiliado.Controls.Add(this.LblCantidadHijos);
             this.GbAfiliado.Controls.Add(this.CmbEstadoCivil);
             this.GbAfiliado.Controls.Add(this.LblEstadoCivil);
             this.GbAfiliado.Controls.Add(this.RdoFemenino);
@@ -87,28 +77,10 @@
             this.GbAfiliado.Controls.Add(this.LblTipo);
             this.GbAfiliado.Location = new System.Drawing.Point(12, 12);
             this.GbAfiliado.Name = "GbAfiliado";
-            this.GbAfiliado.Size = new System.Drawing.Size(384, 341);
+            this.GbAfiliado.Size = new System.Drawing.Size(324, 284);
             this.GbAfiliado.TabIndex = 9;
             this.GbAfiliado.TabStop = false;
             this.GbAfiliado.Text = "Datos del Afiliado";
-            // 
-            // BtnSearch
-            // 
-            this.BtnSearch.Location = new System.Drawing.Point(299, 29);
-            this.BtnSearch.Name = "BtnSearch";
-            this.BtnSearch.Size = new System.Drawing.Size(75, 47);
-            this.BtnSearch.TabIndex = 1;
-            this.BtnSearch.Text = "Buscar";
-            this.BtnSearch.UseVisualStyleBackColor = true;
-            // 
-            // CmbPlanMedico
-            // 
-            this.CmbPlanMedico.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CmbPlanMedico.FormattingEnabled = true;
-            this.CmbPlanMedico.Location = new System.Drawing.Point(146, 299);
-            this.CmbPlanMedico.Name = "CmbPlanMedico";
-            this.CmbPlanMedico.Size = new System.Drawing.Size(146, 21);
-            this.CmbPlanMedico.TabIndex = 12;
             // 
             // TxtApellido
             // 
@@ -126,15 +98,6 @@
             this.LblNombre.TabIndex = 0;
             this.LblNombre.Text = "Nombre";
             // 
-            // LblPlanMedico
-            // 
-            this.LblPlanMedico.AutoSize = true;
-            this.LblPlanMedico.Location = new System.Drawing.Point(30, 302);
-            this.LblPlanMedico.Name = "LblPlanMedico";
-            this.LblPlanMedico.Size = new System.Drawing.Size(66, 13);
-            this.LblPlanMedico.TabIndex = 24;
-            this.LblPlanMedico.Text = "Plan Medico";
-            // 
             // LblApellido
             // 
             this.LblApellido.AutoSize = true;
@@ -144,31 +107,12 @@
             this.LblApellido.TabIndex = 2;
             this.LblApellido.Text = "Apellido";
             // 
-            // TxtCantidadFamiliares
-            // 
-            this.TxtCantidadFamiliares.Enabled = false;
-            this.TxtCantidadFamiliares.Location = new System.Drawing.Point(146, 274);
-            this.TxtCantidadFamiliares.Mask = "99";
-            this.TxtCantidadFamiliares.Name = "TxtCantidadFamiliares";
-            this.TxtCantidadFamiliares.Size = new System.Drawing.Size(146, 20);
-            this.TxtCantidadFamiliares.TabIndex = 11;
-            this.TxtCantidadFamiliares.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // TxtNombre
             // 
             this.TxtNombre.Location = new System.Drawing.Point(146, 86);
             this.TxtNombre.Name = "TxtNombre";
             this.TxtNombre.Size = new System.Drawing.Size(146, 20);
             this.TxtNombre.TabIndex = 2;
-            // 
-            // LblCantidadHijos
-            // 
-            this.LblCantidadHijos.AutoSize = true;
-            this.LblCantidadHijos.Location = new System.Drawing.Point(30, 276);
-            this.LblCantidadHijos.Name = "LblCantidadHijos";
-            this.LblCantidadHijos.Size = new System.Drawing.Size(92, 13);
-            this.LblCantidadHijos.TabIndex = 23;
-            this.LblCantidadHijos.Text = "Familiares a cargo";
             // 
             // CmbEstadoCivil
             // 
@@ -307,7 +251,7 @@
             // 
             // BtnAddFamiliar
             // 
-            this.BtnAddFamiliar.Location = new System.Drawing.Point(111, 359);
+            this.BtnAddFamiliar.Location = new System.Drawing.Point(93, 302);
             this.BtnAddFamiliar.Name = "BtnAddFamiliar";
             this.BtnAddFamiliar.Size = new System.Drawing.Size(75, 41);
             this.BtnAddFamiliar.TabIndex = 13;
@@ -317,7 +261,7 @@
             // 
             // BtnCancel
             // 
-            this.BtnCancel.Location = new System.Drawing.Point(192, 359);
+            this.BtnCancel.Location = new System.Drawing.Point(174, 302);
             this.BtnCancel.Name = "BtnCancel";
             this.BtnCancel.Size = new System.Drawing.Size(75, 41);
             this.BtnCancel.TabIndex = 14;
@@ -326,7 +270,7 @@
             // 
             // BtnAddPareja
             // 
-            this.BtnAddPareja.Location = new System.Drawing.Point(111, 359);
+            this.BtnAddPareja.Location = new System.Drawing.Point(93, 302);
             this.BtnAddPareja.Name = "BtnAddPareja";
             this.BtnAddPareja.Size = new System.Drawing.Size(75, 41);
             this.BtnAddPareja.TabIndex = 15;
@@ -338,7 +282,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(409, 421);
+            this.ClientSize = new System.Drawing.Size(353, 355);
             this.Controls.Add(this.BtnAddPareja);
             this.Controls.Add(this.BtnCancel);
             this.Controls.Add(this.BtnAddFamiliar);
@@ -354,15 +298,10 @@
         #endregion
 
         private System.Windows.Forms.GroupBox GbAfiliado;
-        private System.Windows.Forms.Button BtnSearch;
-        private System.Windows.Forms.ComboBox CmbPlanMedico;
         private System.Windows.Forms.TextBox TxtApellido;
         private System.Windows.Forms.Label LblNombre;
-        private System.Windows.Forms.Label LblPlanMedico;
         private System.Windows.Forms.Label LblApellido;
-        private System.Windows.Forms.MaskedTextBox TxtCantidadFamiliares;
         private System.Windows.Forms.TextBox TxtNombre;
-        private System.Windows.Forms.Label LblCantidadHijos;
         private System.Windows.Forms.ComboBox CmbEstadoCivil;
         private System.Windows.Forms.Label LblEstadoCivil;
         private System.Windows.Forms.RadioButton RdoFemenino;

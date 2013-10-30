@@ -20,6 +20,7 @@ namespace Clinica_Frba.NewFolder12
         }
 
         private Dictionary<int, TipoDocumento> _tipoDocumento;
+        private Dictionary<int, EstadoCivil> _estadoCivil;
 
         private void GetFormData()
         {
@@ -41,6 +42,12 @@ namespace Clinica_Frba.NewFolder12
                 afiliado.Telefono = Validator.CheckEmptyOrNull(MskTxtTelefono.Text);
 
                 afiliado.FechaNacimiento = Validator.CheckDateTimeBeforeThanSystem(DtpFechaNacimiento.Value);
+
+                Validator.AnyRadioChecked(GbAfiliado);
+                afiliado.Sexo = RdoMasculino.Checked ? Sexo.Masculino : Sexo.Femenino;
+
+                id = Int32.Parse(CmbEstadoCivil.SelectedValue.ToString());
+                afiliado.EstadoCivil = _estadoCivil[id];
             }
             catch (Exception e) { }
         }

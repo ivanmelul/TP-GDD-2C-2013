@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 
 namespace Clinica_Frba.Utils
 {
@@ -33,6 +34,14 @@ namespace Clinica_Frba.Utils
                 throw new Exception("Fecha invalida.");
 
             return date;
+        }
+
+        public static void AnyRadioChecked(GroupBox groupBox)
+        {
+            if (groupBox.Controls.OfType<RadioButton>().Any(x => x.Checked))
+                return;
+
+            throw new Exception("Por favor seleccione una opcion.");
         }
 
     }

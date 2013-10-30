@@ -36,5 +36,10 @@ namespace Persistance
         {
             public static String SP_GetAllEspecialidadByProfesional = "SQUELA.GetAllEspecialidadByProfesiona";
         }
+
+        public static class TipoDocumento
+        {
+            public static String SP_GetAllTipoDocumento = "SQUELA.GetAllTipoDocumento";
+        }
     }
 }

@@ -48,6 +48,7 @@
     <Compile Include="FuncionalidadLogic.cs" />
     <Compile Include="RolLogic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TipoDocumento.cs" />
     <Compile Include="UsuarioLogic.cs" />
   </ItemGroup>
   <ItemGroup>
