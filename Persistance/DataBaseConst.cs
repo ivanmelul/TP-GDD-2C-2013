@@ -41,5 +41,15 @@ namespace Persistance
         {
             public static String SP_GetAllTipoDocumento = "SQUELA.GetAllTipoDocumento";
         }
+
+        public static class EstadoCivil
+        {
+            public static String SP_GetAllEstadoCivil = "SQUELA.GetAllEstadoCivil";
+        }
+
+        public static class PlanMedico
+        {
+            public static String SP_GetAllPlanMedico = "SQUELA.GetAllPlanMedico";
+        }
     }
 }

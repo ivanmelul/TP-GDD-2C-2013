@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using System.Globalization;
 using System.Configuration;
 using Persistance;
+using Clinica_Frba.ABM_Afiliado;
 
 namespace Clinica_Frba
 {
@@ -22,7 +23,8 @@ namespace Clinica_Frba
             InitializeConfig();
 
             // Primer Form
-            Application.Run(new Login.frmLogin());
+            Application.Run(new FormAltaAfiliado());
+            //Application.Run(new Login.frmLogin());
         }
 
         public static void InitializeConfig()
