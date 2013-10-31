@@ -48,12 +48,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AgendaPersistance.cs" />
     <Compile Include="Entities\Afiliado.cs" />
+    <Compile Include="Entities\Agenda.cs" />
+    <Compile Include="Entities\Cancelacion.cs" />
+    <Compile Include="Entities\Turno.cs" />
+    <Compile Include="Entities\Horario.cs" />
+    <Compile Include="Entities\Hora.cs" />
     <Compile Include="Entities\TipoDocumento.cs" />
     <Compile Include="EspecialidadPersistance.cs" />
     <Compile Include="DataBaseConst.cs" />
     <Compile Include="DataBaseManager.cs" />
-    <Compile Include="Entities\Horario.cs" />
     <Compile Include="Entities\Dia.cs" />
     <Compile Include="Entities\Especialidad.cs" />
     <Compile Include="Entities\EstadoCivil.cs" />

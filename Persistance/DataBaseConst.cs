@@ -41,5 +41,9 @@ namespace Persistance
         {
             public static String SP_GetAllTipoDocumento = "SQUELA.GetAllTipoDocumento";
         }
+
+        public static class Agenda {
+            public static String SP_GetAllHorarioByAgendaId = "SQUELA.SP_GetAllHorarioByAgendaId";
+        }
     }
 }

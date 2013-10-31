@@ -21,7 +21,7 @@ namespace Persistance.Entities
             rol.ID = Int32.Parse(reader["Rol_ID"].ToString());
             rol.Name = ((String)reader["Rol_Nombre"]).Trim();
             rol.Habilitado = bool.Parse(reader["Rol_Habilitado"].ToString());
-
+            reader.Close();
             rol.Funcionalidades = new FuncionalidadPersistance().GetByRol(rol);
 
             return rol;

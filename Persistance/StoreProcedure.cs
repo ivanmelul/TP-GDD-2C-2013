@@ -136,7 +136,7 @@ namespace Persistance
                 foreach (SPParameter parameter in parameters.Values)
                 {
                     SqlParameter param = new SqlParameter();
-                    cmd.Parameters.Add(parameter);
+                    cmd.Parameters.Add(parameter.Parameter);
                 }
 
                 // Don't close the SqlDataReader
@@ -169,7 +169,8 @@ namespace Persistance
                 }
 
                 // Close the SqlDataReader
-                reader.Close();
+                if (!reader.IsClosed)
+                    reader.Close();
 
                 return map;
             }
@@ -200,7 +201,8 @@ namespace Persistance
                 }
 
                 // Close the SqlDataReader
-                reader.Close();
+                if (!reader.IsClosed)
+                    reader.Close();
 
                 return map;
             }
@@ -221,7 +223,7 @@ namespace Persistance
 
                 foreach (SPParameter parameter in parameters.Values)
                 {
-                    cmd.Parameters.Add(parameter);
+                    cmd.Parameters.Add(parameter.Parameter);
                 }
 
                 cmd.ExecuteNonQuery();
@@ -245,7 +247,7 @@ namespace Persistance
 
                 foreach (SPParameter parameter in parameters.Values)
                 {
-                    cmd.Parameters.Add(parameter);
+                    cmd.Parameters.Add(parameter.Parameter);
                 }
 
                 return cmd.ExecuteScalar();

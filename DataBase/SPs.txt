@@ -3,3 +3,4 @@ GetAllProfesional
 GetAllTipoDocumento
 GetAllEstadoCivil
 GetAllPlanMedico
+GetAllHorarioByAgendaId (@agendaId int) DEBE DEVOLVER LA TABLA HorarioXAgenda, PERO EN VEZ DE IDs, DEBE TENER LOS OBJETOS DIA Y HORA.

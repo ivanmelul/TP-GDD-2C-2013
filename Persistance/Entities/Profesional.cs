@@ -48,6 +48,7 @@ namespace Persistance.Entities
 
             toReturn.Sexo = reader["Profesional_Sexo"].ToString().ToUpper() == "M" ? Sexo.Masculino : Sexo.Femenino;
 
+            reader.Close();
             toReturn.Especialidades = new EspecialidadPersistance().GetByProfesional(toReturn);
 
             return toReturn;
