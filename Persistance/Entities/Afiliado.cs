@@ -14,12 +14,14 @@ namespace Persistance.Entities
         public string DisplayName { get { return string.Format("{0} {1}", Nombre, Apellido); } }
         public TipoDocumento TipoDocumento { get; set; }
         public int Numero { get; set; }
+        public string DisplayDocumento { get { return string.Format("{0}-{1}", TipoDocumento.Tipo, DisplayName); } }
         public string Direccion { get; set; }
         public string Telefono { get; set; }
         public string Mail { get; set; }
         public DateTime FechaNacimiento { get; set; }
         public Sexo Sexo { get; set; }
         public EstadoCivil EstadoCivil { get; set; }
+        public bool TieneConyugue { get { return EstadoCivil.Nombre == "Casado" || EstadoCivil.Nombre == "Concubinato"; } }
         public PlanMedico PlanMedico { get; set; }
         public int NumeroAfiliadoBase { get; set; }
         public int NumeroAfiliadoFamiliar { get; set; }

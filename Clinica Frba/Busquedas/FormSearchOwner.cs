@@ -17,12 +17,17 @@ namespace Clinica_Frba.Busquedas
             InitializeComponent();
         }
 
-        public virtual void SelectedPareja(Afiliado pareja)
+        public virtual void SelectedConyugue(Afiliado conyugue)
         {
         }
 
         public virtual void SelectedFamiliar(Afiliado familiar)
         {
+        }
+
+        public virtual bool Exist(Afiliado afiliado)
+        {
+            return false;
         }
 
     }

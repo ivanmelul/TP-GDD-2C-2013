@@ -216,6 +216,7 @@
     </Compile>
     <Compile Include="Utils\Configuration.cs" />
     <Compile Include="Utils\Initializator.cs" />
+    <Compile Include="Utils\UIHelper.cs" />
     <Compile Include="Utils\Validator.cs" />
   </ItemGroup>
   <ItemGroup>

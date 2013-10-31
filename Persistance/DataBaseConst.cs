@@ -55,5 +55,11 @@ namespace Persistance
         public static class Agenda {
             public static String SP_GetAllHorarioByAgendaId = "SQUELA.SP_GetAllHorarioByAgendaId";
         }
+
+        public static class Afiliado
+        {
+            public static String SP_GetAfiliadoByDocumento = "SQUELA.GetAfiliadoByDocumento";
+        }
+
     }
 }
