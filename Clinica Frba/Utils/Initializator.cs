@@ -13,6 +13,7 @@ namespace Clinica_Frba.Utils
         private static TipoDocumentoLogic _tipoDocumentoLogic = new TipoDocumentoLogic();
         private static EstadoCivilLogic _estadoCivilLogic = new EstadoCivilLogic();
         private static PlanMedicoLogic _planMedicoLogic = new PlanMedicoLogic();
+        private static EspecialidadLogic _especialidadLogic = new EspecialidadLogic();
 
         public static Dictionary<int, TipoDocumento> TipoDocumento(ComboBox combo)
         {
@@ -50,5 +51,16 @@ namespace Clinica_Frba.Utils
             return planMedico;
         }
 
+        public static Dictionary<int, Especialidad> Especialidad(CheckedListBox chkEspecialidades)
+        {
+            Dictionary<int, Especialidad> especialidad = _especialidadLogic.GetAll().ToDictionary(p => p.ID, p => p);
+            Dictionary<int, String> comboCmb = especialidad.Values.ToDictionary(e => e.ID, e => e.Descripcion);
+
+            chkEspecialidades.DataSource = new BindingSource(comboCmb, null);
+            chkEspecialidades.DisplayMember = "Value";
+            chkEspecialidades.ValueMember = "Key";
+
+            return especialidad;
+        }
     }
 }

@@ -34,7 +34,8 @@ namespace Persistance
 
         public static class Especialidad
         {
-            public static String SP_GetAllEspecialidadByProfesional = "SQUELA.GetAllEspecialidadByProfesiona";
+            public static String SP_GetAllEspecialidadByProfesional = "SQUELA.GetAllEspecialidadByProfesional";
+            public static string SP_GetAllEspecialidad = "SQUELA.GetAllEspecialidad";
         }
 
         public static class TipoDocumento
@@ -61,5 +62,9 @@ namespace Persistance
             public static String SP_GetAfiliadoByDocumento = "SQUELA.GetAfiliadoByDocumento";
         }
 
+        public static class Profesional
+        {
+            public static String SP_GetProfesionalByDocumento = "SQUELA.GetProfesionalByDocumento";
+        }
     }
 }

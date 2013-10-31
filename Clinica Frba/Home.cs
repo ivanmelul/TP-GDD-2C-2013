@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using Clinica_Frba.AbmProfesional;
 using Persistance.Entities;
 using Logic;
 
@@ -122,6 +123,13 @@ namespace Clinica_Frba
         {
             Clinica_Frba.Login.frmLogin login = new Clinica_Frba.Login.frmLogin();
             login.Show();
+            this.Hide();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            AbmProfesional.frmAltaProfesional form = new frmAltaProfesional();
+            form.Show();
             this.Hide();
         }
     }

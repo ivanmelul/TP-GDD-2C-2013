@@ -285,6 +285,11 @@ namespace Clinica_Frba.ABM_Afiliado
             ClearFamiliares();
             CleanWorkflow();
         }
+
+        private void FormAltaAfiliado_Load(object sender, EventArgs e)
+        {
+
+        }
         
 
     }

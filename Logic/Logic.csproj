@@ -46,6 +46,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AfiliadoLogic.cs" />
+    <Compile Include="EspecialidadLogic.cs" />
+    <Compile Include="ProfesionalLogic.cs" />
     <Compile Include="EstadoCivilLogic.cs" />
     <Compile Include="FuncionalidadLogic.cs" />
     <Compile Include="PlanMedicoLogic.cs" />

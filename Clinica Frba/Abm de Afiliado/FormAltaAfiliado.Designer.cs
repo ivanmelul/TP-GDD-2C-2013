@@ -465,6 +465,7 @@
             this.Controls.Add(this.GbAfiliado);
             this.Name = "FormAltaAfiliado";
             this.Text = "Alta Afiliado";
+            this.Load += new System.EventHandler(this.FormAltaAfiliado_Load);
             this.GbAfiliado.ResumeLayout(false);
             this.GbAfiliado.PerformLayout();
             this.GbAsociados.ResumeLayout(false);

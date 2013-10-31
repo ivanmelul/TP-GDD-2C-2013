@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="AgendaPersistance.cs" />
     <Compile Include="AfiliadoPersistance.cs" />
+    <Compile Include="ProfesionalPersistance.cs" />
     <Compile Include="Entities\Afiliado.cs" />
     <Compile Include="Entities\Agenda.cs" />
     <Compile Include="Entities\Cancelacion.cs" />

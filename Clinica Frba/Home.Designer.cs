@@ -38,26 +38,26 @@
             this.BtnAltaRol = new System.Windows.Forms.Button();
             this.cmbRoles = new System.Windows.Forms.ComboBox();
             this.gpbFuncionalidades = new System.Windows.Forms.GroupBox();
-            this.gpbAfiliados = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnComprarBono = new System.Windows.Forms.Button();
+            this.btnPedidoTurno = new System.Windows.Forms.Button();
+            this.btnEstadisticas = new System.Windows.Forms.Button();
+            this.btnCancelarAtencion = new System.Windows.Forms.Button();
+            this.btnRegistrarLlegada = new System.Windows.Forms.Button();
+            this.btnRegitrarResultado = new System.Windows.Forms.Button();
+            this.btnEmitirReceta = new System.Windows.Forms.Button();
+            this.btnRegitrarAgenda = new System.Windows.Forms.Button();
             this.gpbProfesionales = new System.Windows.Forms.GroupBox();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
-            this.btnRegitrarAgenda = new System.Windows.Forms.Button();
-            this.btnEmitirReceta = new System.Windows.Forms.Button();
-            this.btnRegitrarResultado = new System.Windows.Forms.Button();
-            this.btnRegistrarLlegada = new System.Windows.Forms.Button();
-            this.btnCancelarAtencion = new System.Windows.Forms.Button();
-            this.btnEstadisticas = new System.Windows.Forms.Button();
-            this.btnPedidoTurno = new System.Windows.Forms.Button();
-            this.btnComprarBono = new System.Windows.Forms.Button();
+            this.gpbAfiliados = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.GpbRoles.SuspendLayout();
             this.gpbFuncionalidades.SuspendLayout();
-            this.gpbAfiliados.SuspendLayout();
             this.gpbProfesionales.SuspendLayout();
+            this.gpbAfiliados.SuspendLayout();
             this.SuspendLayout();
             // 
             // label2
@@ -169,45 +169,85 @@
             this.gpbFuncionalidades.Text = "Funcionalidades";
             this.gpbFuncionalidades.Visible = false;
             // 
-            // gpbAfiliados
+            // btnComprarBono
             // 
-            this.gpbAfiliados.Controls.Add(this.button1);
-            this.gpbAfiliados.Controls.Add(this.button2);
-            this.gpbAfiliados.Controls.Add(this.button3);
-            this.gpbAfiliados.Location = new System.Drawing.Point(15, 102);
-            this.gpbAfiliados.Name = "gpbAfiliados";
-            this.gpbAfiliados.Size = new System.Drawing.Size(344, 74);
-            this.gpbAfiliados.TabIndex = 27;
-            this.gpbAfiliados.TabStop = false;
-            this.gpbAfiliados.Text = "Afiliados";
-            this.gpbAfiliados.Visible = false;
+            this.btnComprarBono.Location = new System.Drawing.Point(504, 40);
+            this.btnComprarBono.Name = "btnComprarBono";
+            this.btnComprarBono.Size = new System.Drawing.Size(102, 43);
+            this.btnComprarBono.TabIndex = 37;
+            this.btnComprarBono.Text = "Comprar Bono";
+            this.btnComprarBono.UseVisualStyleBackColor = true;
+            this.btnComprarBono.Visible = false;
             // 
-            // button1
+            // btnPedidoTurno
             // 
-            this.button1.Location = new System.Drawing.Point(228, 19);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(102, 43);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "Baja Afiliado";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnPedidoTurno.Location = new System.Drawing.Point(381, 91);
+            this.btnPedidoTurno.Name = "btnPedidoTurno";
+            this.btnPedidoTurno.Size = new System.Drawing.Size(102, 43);
+            this.btnPedidoTurno.TabIndex = 36;
+            this.btnPedidoTurno.Text = "Pedir Turno";
+            this.btnPedidoTurno.UseVisualStyleBackColor = true;
+            this.btnPedidoTurno.Visible = false;
             // 
-            // button2
+            // btnEstadisticas
             // 
-            this.button2.Location = new System.Drawing.Point(120, 19);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(102, 43);
-            this.button2.TabIndex = 7;
-            this.button2.Text = "Modificacion Afiliado";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnEstadisticas.Location = new System.Drawing.Point(381, 145);
+            this.btnEstadisticas.Name = "btnEstadisticas";
+            this.btnEstadisticas.Size = new System.Drawing.Size(102, 43);
+            this.btnEstadisticas.TabIndex = 35;
+            this.btnEstadisticas.Text = "Estadisticas";
+            this.btnEstadisticas.UseVisualStyleBackColor = true;
+            this.btnEstadisticas.Visible = false;
             // 
-            // button3
+            // btnCancelarAtencion
             // 
-            this.button3.Location = new System.Drawing.Point(12, 19);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(102, 43);
-            this.button3.TabIndex = 0;
-            this.button3.Text = "Alta Afiliado";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnCancelarAtencion.Location = new System.Drawing.Point(381, 205);
+            this.btnCancelarAtencion.Name = "btnCancelarAtencion";
+            this.btnCancelarAtencion.Size = new System.Drawing.Size(102, 43);
+            this.btnCancelarAtencion.TabIndex = 34;
+            this.btnCancelarAtencion.Text = "Cancelar Atencion Medica";
+            this.btnCancelarAtencion.UseVisualStyleBackColor = true;
+            this.btnCancelarAtencion.Visible = false;
+            // 
+            // btnRegistrarLlegada
+            // 
+            this.btnRegistrarLlegada.Location = new System.Drawing.Point(504, 91);
+            this.btnRegistrarLlegada.Name = "btnRegistrarLlegada";
+            this.btnRegistrarLlegada.Size = new System.Drawing.Size(102, 43);
+            this.btnRegistrarLlegada.TabIndex = 33;
+            this.btnRegistrarLlegada.Text = "Registrar Llegada Paciente";
+            this.btnRegistrarLlegada.UseVisualStyleBackColor = true;
+            this.btnRegistrarLlegada.Visible = false;
+            // 
+            // btnRegitrarResultado
+            // 
+            this.btnRegitrarResultado.Location = new System.Drawing.Point(504, 145);
+            this.btnRegitrarResultado.Name = "btnRegitrarResultado";
+            this.btnRegitrarResultado.Size = new System.Drawing.Size(102, 43);
+            this.btnRegitrarResultado.TabIndex = 32;
+            this.btnRegitrarResultado.Text = "Registrar Resultado";
+            this.btnRegitrarResultado.UseVisualStyleBackColor = true;
+            this.btnRegitrarResultado.Visible = false;
+            // 
+            // btnEmitirReceta
+            // 
+            this.btnEmitirReceta.Location = new System.Drawing.Point(504, 205);
+            this.btnEmitirReceta.Name = "btnEmitirReceta";
+            this.btnEmitirReceta.Size = new System.Drawing.Size(102, 43);
+            this.btnEmitirReceta.TabIndex = 31;
+            this.btnEmitirReceta.Text = "Emitir Receta";
+            this.btnEmitirReceta.UseVisualStyleBackColor = true;
+            this.btnEmitirReceta.Visible = false;
+            // 
+            // btnRegitrarAgenda
+            // 
+            this.btnRegitrarAgenda.Location = new System.Drawing.Point(381, 40);
+            this.btnRegitrarAgenda.Name = "btnRegitrarAgenda";
+            this.btnRegitrarAgenda.Size = new System.Drawing.Size(102, 43);
+            this.btnRegitrarAgenda.TabIndex = 29;
+            this.btnRegitrarAgenda.Text = "Registrar Agenda";
+            this.btnRegitrarAgenda.UseVisualStyleBackColor = true;
+            this.btnRegitrarAgenda.Visible = false;
             // 
             // gpbProfesionales
             // 
@@ -248,86 +288,47 @@
             this.button6.TabIndex = 0;
             this.button6.Text = "Alta Profesional";
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
-            // btnRegitrarAgenda
+            // gpbAfiliados
             // 
-            this.btnRegitrarAgenda.Location = new System.Drawing.Point(381, 40);
-            this.btnRegitrarAgenda.Name = "btnRegitrarAgenda";
-            this.btnRegitrarAgenda.Size = new System.Drawing.Size(102, 43);
-            this.btnRegitrarAgenda.TabIndex = 29;
-            this.btnRegitrarAgenda.Text = "Registrar Agenda";
-            this.btnRegitrarAgenda.UseVisualStyleBackColor = true;
-            this.btnRegitrarAgenda.Visible = false;
+            this.gpbAfiliados.Controls.Add(this.button1);
+            this.gpbAfiliados.Controls.Add(this.button2);
+            this.gpbAfiliados.Controls.Add(this.button3);
+            this.gpbAfiliados.Location = new System.Drawing.Point(15, 102);
+            this.gpbAfiliados.Name = "gpbAfiliados";
+            this.gpbAfiliados.Size = new System.Drawing.Size(344, 74);
+            this.gpbAfiliados.TabIndex = 27;
+            this.gpbAfiliados.TabStop = false;
+            this.gpbAfiliados.Text = "Afiliados";
+            this.gpbAfiliados.Visible = false;
             // 
-            // btnEmitirReceta
+            // button1
             // 
-            this.btnEmitirReceta.Location = new System.Drawing.Point(504, 205);
-            this.btnEmitirReceta.Name = "btnEmitirReceta";
-            this.btnEmitirReceta.Size = new System.Drawing.Size(102, 43);
-            this.btnEmitirReceta.TabIndex = 31;
-            this.btnEmitirReceta.Text = "Emitir Receta";
-            this.btnEmitirReceta.UseVisualStyleBackColor = true;
-            this.btnEmitirReceta.Visible = false;
+            this.button1.Location = new System.Drawing.Point(228, 19);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(102, 43);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "Baja Afiliado";
+            this.button1.UseVisualStyleBackColor = true;
             // 
-            // btnRegitrarResultado
+            // button2
             // 
-            this.btnRegitrarResultado.Location = new System.Drawing.Point(504, 145);
-            this.btnRegitrarResultado.Name = "btnRegitrarResultado";
-            this.btnRegitrarResultado.Size = new System.Drawing.Size(102, 43);
-            this.btnRegitrarResultado.TabIndex = 32;
-            this.btnRegitrarResultado.Text = "Registrar Resultado";
-            this.btnRegitrarResultado.UseVisualStyleBackColor = true;
-            this.btnRegitrarResultado.Visible = false;
+            this.button2.Location = new System.Drawing.Point(120, 19);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(102, 43);
+            this.button2.TabIndex = 7;
+            this.button2.Text = "Modificacion Afiliado";
+            this.button2.UseVisualStyleBackColor = true;
             // 
-            // btnRegistrarLlegada
+            // button3
             // 
-            this.btnRegistrarLlegada.Location = new System.Drawing.Point(504, 91);
-            this.btnRegistrarLlegada.Name = "btnRegistrarLlegada";
-            this.btnRegistrarLlegada.Size = new System.Drawing.Size(102, 43);
-            this.btnRegistrarLlegada.TabIndex = 33;
-            this.btnRegistrarLlegada.Text = "Registrar Llegada Paciente";
-            this.btnRegistrarLlegada.UseVisualStyleBackColor = true;
-            this.btnRegistrarLlegada.Visible = false;
-            // 
-            // btnCancelarAtencion
-            // 
-            this.btnCancelarAtencion.Location = new System.Drawing.Point(381, 205);
-            this.btnCancelarAtencion.Name = "btnCancelarAtencion";
-            this.btnCancelarAtencion.Size = new System.Drawing.Size(102, 43);
-            this.btnCancelarAtencion.TabIndex = 34;
-            this.btnCancelarAtencion.Text = "Cancelar Atencion Medica";
-            this.btnCancelarAtencion.UseVisualStyleBackColor = true;
-            this.btnCancelarAtencion.Visible = false;
-            // 
-            // btnEstadisticas
-            // 
-            this.btnEstadisticas.Location = new System.Drawing.Point(381, 145);
-            this.btnEstadisticas.Name = "btnEstadisticas";
-            this.btnEstadisticas.Size = new System.Drawing.Size(102, 43);
-            this.btnEstadisticas.TabIndex = 35;
-            this.btnEstadisticas.Text = "Estadisticas";
-            this.btnEstadisticas.UseVisualStyleBackColor = true;
-            this.btnEstadisticas.Visible = false;
-            // 
-            // btnPedidoTurno
-            // 
-            this.btnPedidoTurno.Location = new System.Drawing.Point(381, 91);
-            this.btnPedidoTurno.Name = "btnPedidoTurno";
-            this.btnPedidoTurno.Size = new System.Drawing.Size(102, 43);
-            this.btnPedidoTurno.TabIndex = 36;
-            this.btnPedidoTurno.Text = "Pedir Turno";
-            this.btnPedidoTurno.UseVisualStyleBackColor = true;
-            this.btnPedidoTurno.Visible = false;
-            // 
-            // btnComprarBono
-            // 
-            this.btnComprarBono.Location = new System.Drawing.Point(504, 40);
-            this.btnComprarBono.Name = "btnComprarBono";
-            this.btnComprarBono.Size = new System.Drawing.Size(102, 43);
-            this.btnComprarBono.TabIndex = 37;
-            this.btnComprarBono.Text = "Comprar Bono";
-            this.btnComprarBono.UseVisualStyleBackColor = true;
-            this.btnComprarBono.Visible = false;
+            this.button3.Location = new System.Drawing.Point(12, 19);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(102, 43);
+            this.button3.TabIndex = 0;
+            this.button3.Text = "Alta Afiliado";
+            this.button3.UseVisualStyleBackColor = true;
             // 
             // Home
             // 
@@ -346,8 +347,8 @@
             this.Load += new System.EventHandler(this.Home_Load);
             this.GpbRoles.ResumeLayout(false);
             this.gpbFuncionalidades.ResumeLayout(false);
-            this.gpbAfiliados.ResumeLayout(false);
             this.gpbProfesionales.ResumeLayout(false);
+            this.gpbAfiliados.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
