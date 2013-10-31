@@ -1,4 +1,4 @@
-﻿namespace Clinica_Frba.Abm_de_Afiliado
+﻿namespace Clinica_Frba.ABM_Afiliado
 {
     partial class AgregarAfiliado
     {
@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.GbAfiliado = new System.Windows.Forms.GroupBox();
+            this.MskTxtTelefono = new System.Windows.Forms.MaskedTextBox();
             this.TxtApellido = new System.Windows.Forms.TextBox();
             this.LblNombre = new System.Windows.Forms.Label();
             this.LblApellido = new System.Windows.Forms.Label();
@@ -40,7 +41,6 @@
             this.LblSexo = new System.Windows.Forms.Label();
             this.LblFechaNacimiento = new System.Windows.Forms.Label();
             this.DtpFechaNacimiento = new System.Windows.Forms.DateTimePicker();
-            this.TxtTelefono = new System.Windows.Forms.TextBox();
             this.TxtDireccion = new System.Windows.Forms.TextBox();
             this.MskTxtNumero = new System.Windows.Forms.MaskedTextBox();
             this.LblTelefono = new System.Windows.Forms.Label();
@@ -50,12 +50,14 @@
             this.LblTipo = new System.Windows.Forms.Label();
             this.BtnAddFamiliar = new System.Windows.Forms.Button();
             this.BtnCancel = new System.Windows.Forms.Button();
-            this.BtnAddPareja = new System.Windows.Forms.Button();
+            this.BtnAddConyugue = new System.Windows.Forms.Button();
+            this.BtnClean = new System.Windows.Forms.Button();
             this.GbAfiliado.SuspendLayout();
             this.SuspendLayout();
             // 
             // GbAfiliado
             // 
+            this.GbAfiliado.Controls.Add(this.MskTxtTelefono);
             this.GbAfiliado.Controls.Add(this.TxtApellido);
             this.GbAfiliado.Controls.Add(this.LblNombre);
             this.GbAfiliado.Controls.Add(this.LblApellido);
@@ -67,7 +69,6 @@
             this.GbAfiliado.Controls.Add(this.LblSexo);
             this.GbAfiliado.Controls.Add(this.LblFechaNacimiento);
             this.GbAfiliado.Controls.Add(this.DtpFechaNacimiento);
-            this.GbAfiliado.Controls.Add(this.TxtTelefono);
             this.GbAfiliado.Controls.Add(this.TxtDireccion);
             this.GbAfiliado.Controls.Add(this.MskTxtNumero);
             this.GbAfiliado.Controls.Add(this.LblTelefono);
@@ -81,6 +82,16 @@
             this.GbAfiliado.TabIndex = 9;
             this.GbAfiliado.TabStop = false;
             this.GbAfiliado.Text = "Datos del Afiliado";
+            // 
+            // MskTxtTelefono
+            // 
+            this.MskTxtTelefono.Enabled = false;
+            this.MskTxtTelefono.Location = new System.Drawing.Point(146, 167);
+            this.MskTxtTelefono.Mask = "9999-9999";
+            this.MskTxtTelefono.Name = "MskTxtTelefono";
+            this.MskTxtTelefono.Size = new System.Drawing.Size(146, 20);
+            this.MskTxtTelefono.TabIndex = 5;
+            this.MskTxtTelefono.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // TxtApellido
             // 
@@ -121,7 +132,7 @@
             this.CmbEstadoCivil.Location = new System.Drawing.Point(146, 245);
             this.CmbEstadoCivil.Name = "CmbEstadoCivil";
             this.CmbEstadoCivil.Size = new System.Drawing.Size(146, 21);
-            this.CmbEstadoCivil.TabIndex = 10;
+            this.CmbEstadoCivil.TabIndex = 9;
             // 
             // LblEstadoCivil
             // 
@@ -138,7 +149,7 @@
             this.RdoFemenino.Location = new System.Drawing.Point(223, 222);
             this.RdoFemenino.Name = "RdoFemenino";
             this.RdoFemenino.Size = new System.Drawing.Size(71, 17);
-            this.RdoFemenino.TabIndex = 9;
+            this.RdoFemenino.TabIndex = 8;
             this.RdoFemenino.TabStop = true;
             this.RdoFemenino.Text = "Femenino";
             this.RdoFemenino.UseVisualStyleBackColor = true;
@@ -149,7 +160,7 @@
             this.RdoMasculino.Location = new System.Drawing.Point(149, 222);
             this.RdoMasculino.Name = "RdoMasculino";
             this.RdoMasculino.Size = new System.Drawing.Size(73, 17);
-            this.RdoMasculino.TabIndex = 8;
+            this.RdoMasculino.TabIndex = 7;
             this.RdoMasculino.TabStop = true;
             this.RdoMasculino.Text = "Masculino";
             this.RdoMasculino.UseVisualStyleBackColor = true;
@@ -178,21 +189,14 @@
             this.DtpFechaNacimiento.Location = new System.Drawing.Point(146, 194);
             this.DtpFechaNacimiento.Name = "DtpFechaNacimiento";
             this.DtpFechaNacimiento.Size = new System.Drawing.Size(146, 20);
-            this.DtpFechaNacimiento.TabIndex = 7;
-            // 
-            // TxtTelefono
-            // 
-            this.TxtTelefono.Location = new System.Drawing.Point(146, 167);
-            this.TxtTelefono.Name = "TxtTelefono";
-            this.TxtTelefono.Size = new System.Drawing.Size(146, 20);
-            this.TxtTelefono.TabIndex = 6;
+            this.DtpFechaNacimiento.TabIndex = 6;
             // 
             // TxtDireccion
             // 
             this.TxtDireccion.Location = new System.Drawing.Point(146, 141);
             this.TxtDireccion.Name = "TxtDireccion";
             this.TxtDireccion.Size = new System.Drawing.Size(146, 20);
-            this.TxtDireccion.TabIndex = 5;
+            this.TxtDireccion.TabIndex = 4;
             // 
             // MskTxtNumero
             // 
@@ -227,9 +231,9 @@
             this.LblNumero.AutoSize = true;
             this.LblNumero.Location = new System.Drawing.Point(26, 64);
             this.LblNumero.Name = "LblNumero";
-            this.LblNumero.Size = new System.Drawing.Size(44, 13);
+            this.LblNumero.Size = new System.Drawing.Size(102, 13);
             this.LblNumero.TabIndex = 6;
-            this.LblNumero.Text = "Numero";
+            this.LblNumero.Text = "Numero Documento";
             // 
             // CmbTipo
             // 
@@ -245,45 +249,57 @@
             this.LblTipo.AutoSize = true;
             this.LblTipo.Location = new System.Drawing.Point(26, 37);
             this.LblTipo.Name = "LblTipo";
-            this.LblTipo.Size = new System.Drawing.Size(28, 13);
+            this.LblTipo.Size = new System.Drawing.Size(86, 13);
             this.LblTipo.TabIndex = 4;
-            this.LblTipo.Text = "Tipo";
+            this.LblTipo.Text = "Tipo Documento";
             // 
             // BtnAddFamiliar
             // 
-            this.BtnAddFamiliar.Location = new System.Drawing.Point(93, 302);
+            this.BtnAddFamiliar.Location = new System.Drawing.Point(58, 302);
             this.BtnAddFamiliar.Name = "BtnAddFamiliar";
             this.BtnAddFamiliar.Size = new System.Drawing.Size(75, 41);
-            this.BtnAddFamiliar.TabIndex = 13;
+            this.BtnAddFamiliar.TabIndex = 11;
             this.BtnAddFamiliar.Text = "Agregar";
             this.BtnAddFamiliar.UseVisualStyleBackColor = true;
             this.BtnAddFamiliar.Click += new System.EventHandler(this.BtnAddFamiliar_Click);
             // 
             // BtnCancel
             // 
-            this.BtnCancel.Location = new System.Drawing.Point(174, 302);
+            this.BtnCancel.Location = new System.Drawing.Point(220, 302);
             this.BtnCancel.Name = "BtnCancel";
             this.BtnCancel.Size = new System.Drawing.Size(75, 41);
-            this.BtnCancel.TabIndex = 14;
+            this.BtnCancel.TabIndex = 13;
             this.BtnCancel.Text = "Cancelar";
             this.BtnCancel.UseVisualStyleBackColor = true;
+            this.BtnCancel.Click += new System.EventHandler(this.BtnCancel_Click);
             // 
-            // BtnAddPareja
+            // BtnAddConyugue
             // 
-            this.BtnAddPareja.Location = new System.Drawing.Point(93, 302);
-            this.BtnAddPareja.Name = "BtnAddPareja";
-            this.BtnAddPareja.Size = new System.Drawing.Size(75, 41);
-            this.BtnAddPareja.TabIndex = 15;
-            this.BtnAddPareja.Text = "Agregar";
-            this.BtnAddPareja.UseVisualStyleBackColor = true;
-            this.BtnAddPareja.Click += new System.EventHandler(this.BtnAddPareja_Click);
+            this.BtnAddConyugue.Location = new System.Drawing.Point(58, 302);
+            this.BtnAddConyugue.Name = "BtnAddConyugue";
+            this.BtnAddConyugue.Size = new System.Drawing.Size(75, 41);
+            this.BtnAddConyugue.TabIndex = 10;
+            this.BtnAddConyugue.Text = "Agregar";
+            this.BtnAddConyugue.UseVisualStyleBackColor = true;
+            this.BtnAddConyugue.Click += new System.EventHandler(this.BtnAddConyugue_Click);
+            // 
+            // BtnClean
+            // 
+            this.BtnClean.Location = new System.Drawing.Point(139, 302);
+            this.BtnClean.Name = "BtnClean";
+            this.BtnClean.Size = new System.Drawing.Size(75, 41);
+            this.BtnClean.TabIndex = 12;
+            this.BtnClean.Text = "Limpiar";
+            this.BtnClean.UseVisualStyleBackColor = true;
+            this.BtnClean.Click += new System.EventHandler(this.BtnClean_Click);
             // 
             // AgregarAfiliado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(353, 355);
-            this.Controls.Add(this.BtnAddPareja);
+            this.Controls.Add(this.BtnClean);
+            this.Controls.Add(this.BtnAddConyugue);
             this.Controls.Add(this.BtnCancel);
             this.Controls.Add(this.BtnAddFamiliar);
             this.Controls.Add(this.GbAfiliado);
@@ -309,7 +325,6 @@
         private System.Windows.Forms.Label LblSexo;
         private System.Windows.Forms.Label LblFechaNacimiento;
         private System.Windows.Forms.DateTimePicker DtpFechaNacimiento;
-        private System.Windows.Forms.TextBox TxtTelefono;
         private System.Windows.Forms.TextBox TxtDireccion;
         private System.Windows.Forms.MaskedTextBox MskTxtNumero;
         private System.Windows.Forms.Label LblTelefono;
@@ -319,6 +334,8 @@
         private System.Windows.Forms.Label LblTipo;
         private System.Windows.Forms.Button BtnAddFamiliar;
         private System.Windows.Forms.Button BtnCancel;
-        private System.Windows.Forms.Button BtnAddPareja;
+        private System.Windows.Forms.Button BtnAddConyugue;
+        private System.Windows.Forms.MaskedTextBox MskTxtTelefono;
+        private System.Windows.Forms.Button BtnClean;
     }
 }

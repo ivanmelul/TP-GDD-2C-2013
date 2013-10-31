@@ -51,5 +51,11 @@ namespace Persistance
         {
             public static String SP_GetAllPlanMedico = "SQUELA.GetAllPlanMedico";
         }
+
+        public static class Afiliado
+        {
+            public static String SP_GetAfiliadoByDocumento = "SQUELA.GetAfiliadoByDocumento";
+        }
+
     }
 }
