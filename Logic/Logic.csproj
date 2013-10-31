@@ -45,7 +45,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EstadoCivilLogic.cs" />
     <Compile Include="FuncionalidadLogic.cs" />
+    <Compile Include="PlanMedicoLogic.cs" />
     <Compile Include="RolLogic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TipoDocumento.cs" />

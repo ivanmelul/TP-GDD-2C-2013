@@ -1,4 +1,4 @@
-﻿namespace Clinica_Frba.NewFolder12
+﻿namespace Clinica_Frba.ABM_Afiliado
 {
     partial class FormAltaAfiliado
     {

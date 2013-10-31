@@ -10,16 +10,44 @@ namespace Clinica_Frba.Utils
 {
     public class Initializator
     {
-        public Dictionary<int, TipoCancelacion> TipoCancelacion(ComboBox combo)
+        private static TipoDocumentoLogic _tipoDocumentoLogic = new TipoDocumentoLogic();
+        private static EstadoCivilLogic _estadoCivilLogic = new EstadoCivilLogic();
+        private static PlanMedicoLogic _planMedicoLogic = new PlanMedicoLogic();
+
+        public static Dictionary<int, TipoDocumento> TipoDocumento(ComboBox combo)
         {
+            Dictionary<int, TipoDocumento> tipoDocumentos = _tipoDocumentoLogic.GetAll().ToDictionary(p => p.ID, p => p);
+            Dictionary<int, String> comboCmb = tipoDocumentos.Values.ToDictionary(p => p.ID, p => p.Tipo);
 
-
-            _ciudades = ciudades.ToDictionary(p => p.ID, p => p);
-            Dictionary<int, String> comboCmb = ciudades.ToDictionary(p => p.ID, p => p.Name);
-
-            combo.DataSource = new BindingSource(ciudadesCmb, null);
+            combo.DataSource = new BindingSource(comboCmb, null);
             combo.DisplayMember = "Value";
             combo.ValueMember = "Key";
+
+            return tipoDocumentos;
+        }
+
+        public static Dictionary<int, EstadoCivil> EstadoCivil(ComboBox combo)
+        {
+            Dictionary<int, EstadoCivil> estadoCivil = _estadoCivilLogic.GetAll().ToDictionary(p => p.ID, p => p);
+            Dictionary<int, String> comboCmb = estadoCivil.Values.ToDictionary(p => p.ID, p => p.Nombre);
+
+            combo.DataSource = new BindingSource(comboCmb, null);
+            combo.DisplayMember = "Value";
+            combo.ValueMember = "Key";
+
+            return estadoCivil;
+        }
+
+        public static Dictionary<int, PlanMedico> PlanMedico(ComboBox combo)
+        {
+            Dictionary<int, PlanMedico> planMedico = _planMedicoLogic.GetAll().ToDictionary(p => p.ID, p => p);
+            Dictionary<int, String> comboCmb = planMedico.Values.ToDictionary(p => p.ID, p => p.Nombre);
+
+            combo.DataSource = new BindingSource(comboCmb, null);
+            combo.DisplayMember = "Value";
+            combo.ValueMember = "Key";
+
+            return planMedico;
         }
 
     }

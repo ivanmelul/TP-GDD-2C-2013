@@ -10,17 +10,27 @@ using Clinica_Frba.Busquedas;
 using Clinica_Frba.Utils;
 using Persistance.Entities;
 
-namespace Clinica_Frba.NewFolder12
+namespace Clinica_Frba.ABM_Afiliado
 {
     public partial class FormAltaAfiliado : FormSearchOwner
     {
         public FormAltaAfiliado()
         {
             InitializeComponent();
+
+            Initialize();
         }
 
         private Dictionary<int, TipoDocumento> _tipoDocumento;
         private Dictionary<int, EstadoCivil> _estadoCivil;
+        private Dictionary<int, PlanMedico> _planMedico;
+
+        public void Initialize()
+        {
+            _estadoCivil = Initializator.EstadoCivil(CmbEstadoCivil);
+            _tipoDocumento = Initializator.TipoDocumento(CmbTipo);
+            _planMedico = Initializator.PlanMedico(CmbPlanMedico);
+        }
 
         private void GetFormData()
         {
