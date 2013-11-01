@@ -28,10 +28,10 @@ SET IDENTITY_INSERT [SQUELA].[PlanMedico] OFF
 -- Migracion Tabla Afiliados
 --
 INSERT INTO [SQUELA].[Afiliado]
-(
+(	
 	[Nombre],
 	[Apellido],
-	[DNI],
+	[Numero],
 	[Direccion],
 	[Telefono],
 	[Mail],
@@ -43,9 +43,10 @@ INSERT INTO [SQUELA].[Afiliado]
 	-- [NumeroAfiliadoFamiliar], DEFAULT
 )
 SELECT DISTINCT 
+		
 		[Paciente_Nombre] AS Nombre,
-		[Paciente_Apellido] AS Apellido,
-		[Paciente_Dni] AS DNI,
+		[Paciente_Apellido] AS Apellido,	
+		[Paciente_Dni] AS Numero,	
 		[Paciente_Direccion] AS Direccion,
 		[Paciente_Telefono] AS Telefono,
 		[Paciente_Mail] AS Mail,
@@ -61,10 +62,10 @@ FROM gd_esquema.Maestra
 --							   --
 
 INSERT INTO [SQUELA].[Profesional]
-(
+(	
+	[ID_Profesional],
 	[Nombre],
 	[Apellido],
-	[DNI],
 	[Direccion],
 	[Telefono],
 	[Mail],
@@ -74,9 +75,9 @@ INSERT INTO [SQUELA].[Profesional]
 	-- [Sexo] NULL
 )
 SELECT DISTINCT 
+	[Medico_Dni] AS ID_Profesional,
 	[Medico_Nombre] AS Nombre,
 	[Medico_Apellido] AS Apellido,
-	[Medico_Dni] AS DNI,
 	[Medico_Direccion] AS Direccion,
 	[Medico_Telefono] AS Telefono,
 	[Medico_Mail] AS Mail,
@@ -129,20 +130,3 @@ SET IDENTITY_INSERT [SQUELA].[Especialidad] OFF
 --								--
 -- Migracion Tabla Compra       --
 --								--
-/*
-SET IDENTITY_INSERT [SQUELA].[Compra] ON
-
-INSERT INTO [SQUELA].[Compra]
-(
-	[ID_Compra],
-	[Fecha]
-)
-SELECT DISTINCT 
-    [Especialidad_Codigo] AS ID_Especialidad,
-    [Especialidad_Descripcion] AS Descripcion
-	FROM gd_esquema.Maestra
-	WHERE [Especialidad_Codigo] IS NOT NULL
-	
-SET IDENTITY_INSERT [SQUELA].[Especialidad] OFF
-
-*/

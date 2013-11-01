@@ -75,7 +75,7 @@ CREATE TABLE [SQUELA].[Afiliado]
 	[ID_Afiliado] [numeric] (18, 0) IDENTITY(1,1) PRIMARY KEY,
 	[Nombre] [nvarchar](255) NOT NULL,
 	[Apellido] [nvarchar](255) NOT NULL,
-	[ID_TipoDocumento] [numeric](18, 0) NOT NULL,
+	[ID_TipoDocumento] [numeric](18, 0) NOT NULL DEFAULT 1,
 	[Numero] [numeric](18, 0) NOT NULL,
 	[Direccion] [nvarchar](255) NOT NULL,
 	[Telefono] [nvarchar](255) NOT NULL,
@@ -206,11 +206,11 @@ CREATE TABLE [SQUELA].[Dia]
 --
 CREATE TABLE [SQUELA].[BonoConsulta]
 (
-	[ID_BonoConsulta] [numeric](18, 0) NOT NULL PRIMARY KEY, -- TODO: IDENTITY(1,1) -> Prenderlo despues de la migracion
+	[ID_BonoConsulta] [numeric](18, 0) NOT NULL  IDENTITY(1,1) PRIMARY KEY, -- TODO: IDENTITY(1,1) -> Prenderlo despues de la migracion
 	[ID_Compra] [numeric](18, 0) NOT NULL,
 	[ID_PlanMedico] [numeric](18, 0) NOT NULL,
 	[ID_Comprador] [numeric](18, 0) NOT NULL,
-	[ID_Consumidor] [numeric](18, 0) NOT NULL,
+	[ID_Consumidor] [numeric](18, 0) NULL,
 	[NumeroConsulta] [numeric](18, 0) NULL
 )
 
@@ -219,11 +219,11 @@ CREATE TABLE [SQUELA].[BonoConsulta]
 --
 CREATE TABLE [SQUELA].[BonoFarmacia]
 (
-	[ID_BonoFarmacia] [numeric](18, 0) NOT NULL PRIMARY KEY, -- TODO: IDENTITY(1,1) -> Prenderlo despues de la migracion
+	[ID_BonoFarmacia] [numeric](18, 0) NOT NULL  IDENTITY(1,1) PRIMARY KEY, -- TODO: IDENTITY(1,1) -> Prenderlo despues de la migracion
 	[ID_Compra] [numeric](18, 0) NOT NULL,
 	[ID_PlanMedico] [numeric](18, 0) NOT NULL,
 	[ID_Comprador] [numeric](18, 0) NOT NULL,
-	[ID_Consumidor] [numeric](18, 0) NOT NULL
+	[ID_Consumidor] [numeric](18, 0) NULL
 )
 
 --
