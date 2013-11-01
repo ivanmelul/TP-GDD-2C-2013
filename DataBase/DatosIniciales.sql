@@ -20,9 +20,14 @@ INSERT INTO [SQUELA].Rol([Nombre]) VALUES('Profesional')
 DECLARE @funcId int
 DECLARE @roleId int
 
-SELECT @roleId = [ID_Rol] FROM [SQUELA].Rol WHERE [Nombre] = 'Afiliado'
+SELECT @roleId = [ID_Rol] FROM [SQUELA].Rol WHERE [Nombre] = 'Administrativo'
 
 SELECT @funcId = [ID_Func] FROM [SQUELA].Funcionalidad WHERE [Nombre] = 'ABM Roles'
+INSERT INTO [SQUELA].RolXFuncionalidad([ID_Func], [ID_Rol]) VALUES (@funcId, @roleId)
+
+SELECT @roleId = [ID_Rol] FROM [SQUELA].Rol WHERE [Nombre] = 'Profesional'
+
+SELECT @funcId = [ID_Func] FROM [SQUELA].Funcionalidad WHERE [Nombre] = 'Pedir Turno'
 INSERT INTO [SQUELA].RolXFuncionalidad([ID_Func], [ID_Rol]) VALUES (@funcId, @roleId)
 
 
@@ -36,6 +41,9 @@ DECLARE @userId int
 SELECT @roleId = [ID_Rol] FROM [SQUELA].Rol WHERE [Nombre] = 'Administrativo'
 
 SELECT @userId = [ID_Usuario] FROM [SQUELA].Usuario WHERE [Usuario] = 'Admin'
+INSERT INTO [SQUELA].RolXUsuario([ID_Usuario], [ID_Rol]) VALUES (@userId,@roleId)
+
+SELECT @roleId = [ID_Rol] FROM [SQUELA].Rol WHERE [Nombre] = 'Profesional'
 INSERT INTO [SQUELA].RolXUsuario([ID_Usuario], [ID_Rol]) VALUES (@userId,@roleId)
 
 --Creacion horarios de turnos
@@ -65,3 +73,14 @@ INSERT INTO [SQUELA].Horario(Hora) VALUES ('18:00')
 INSERT INTO [SQUELA].Horario(Hora) VALUES ('18:30')
 INSERT INTO [SQUELA].Horario(Hora) VALUES ('19:00')
 INSERT INTO [SQUELA].Horario(Hora) VALUES ('19:30')
+
+--Creacion EstadosCiviles
+INSERT INTO [SQUELA].[EstadoCivil](Nombre) VALUES ('Casado/a')
+INSERT INTO [SQUELA].[EstadoCivil](Nombre) VALUES ('Soltero/a')
+INSERT INTO [SQUELA].[EstadoCivil](Nombre) VALUES ('Viudo/a')
+INSERT INTO [SQUELA].[EstadoCivil](Nombre) VALUES ('Divorciado/a')
+
+--Creacion TipoDocumento
+INSERT INTO [SQUELA].[TipoDocumento](Tipo) VALUES ('DNI') 
+INSERT INTO [SQUELA].[TipoDocumento](Tipo) VALUES ('Pasaporte') 
+INSERT INTO [SQUELA].[TipoDocumento](Tipo) VALUES ('Cedula') 
