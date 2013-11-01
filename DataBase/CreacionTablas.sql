@@ -72,7 +72,7 @@ CREATE TABLE [SQUELA].[TipoDocumento]
 --
 CREATE TABLE [SQUELA].[Afiliado]
 (
-	[ID_Afiliado] [numeric] (18, 0) IDENTITY(1,1) PRIMARY KEY,
+	[ID_Afiliado] [numeric] (18, 0) IDENTITY(1000,1) PRIMARY KEY,
 	[Nombre] [nvarchar](255) NOT NULL,
 	[Apellido] [nvarchar](255) NOT NULL,
 	[ID_TipoDocumento] [numeric](18, 0) NOT NULL DEFAULT 1,
@@ -84,7 +84,7 @@ CREATE TABLE [SQUELA].[Afiliado]
 	[Sexo] [char](1) NULL,
 	[ID_EstadoCivil] [numeric](18, 0) NULL,
 	[ID_PlanMedico] [numeric](18, 0) NOT NULL,
-	[NumeroAfiliadoBase] [numeric](18, 0) NOT NULL,-- IDENTITY(1,1),
+	[NumeroAfiliadoBase] [numeric](18, 0) NOT NULL,
 	[NumeroAfiliadoFamiliar] [numeric](2, 0) NOT NULL DEFAULT 1,
 	[FechaBaja] [datetime] NULL/*,
 	UNIQUE ([NumeroAfiliadoBase], [NumeroAfiliadoFamiliar]),

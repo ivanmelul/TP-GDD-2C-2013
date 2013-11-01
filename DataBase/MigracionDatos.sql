@@ -38,9 +38,9 @@ INSERT INTO [SQUELA].[Afiliado]
 	[FechaNacimiento],
 	-- [Sexo],
 	-- [ID_EstadoCivil],
-	[ID_PlanMedico]
-	-- [NumeroAfiliadoBase], IDENTITY
-	-- [NumeroAfiliadoFamiliar], DEFAULT
+	[ID_PlanMedico],
+	[NumeroAfiliadoBase]
+	--[NumeroAfiliadoFamiliar], DEFAULT
 )
 SELECT DISTINCT 
 		
@@ -53,9 +53,12 @@ SELECT DISTINCT
 		[Paciente_Fecha_Nac] AS FechaNacimiento,
 		-- [Sexo] NULL
 		-- [ID_EstadoCivil] NULL
-		[Plan_Med_Codigo] AS ID_PlanMedico
+		[Plan_Med_Codigo] AS ID_PlanMedico,
+		1 AS NumeroAfiliadoBase
 		
 FROM gd_esquema.Maestra
+
+UPDATE [SQUELA].[Afiliado] SET [NumeroAfiliadoBase] = [ID_Afiliado]
 
 --							   --
 -- Migracion Tabla Profesional --
@@ -63,9 +66,9 @@ FROM gd_esquema.Maestra
 
 INSERT INTO [SQUELA].[Profesional]
 (	
-	[ID_Profesional],
 	[Nombre],
 	[Apellido],
+	[Numero],
 	[Direccion],
 	[Telefono],
 	[Mail],
@@ -75,9 +78,9 @@ INSERT INTO [SQUELA].[Profesional]
 	-- [Sexo] NULL
 )
 SELECT DISTINCT 
-	[Medico_Dni] AS ID_Profesional,
 	[Medico_Nombre] AS Nombre,
 	[Medico_Apellido] AS Apellido,
+	[Medico_Dni] AS Numero,
 	[Medico_Direccion] AS Direccion,
 	[Medico_Telefono] AS Telefono,
 	[Medico_Mail] AS Mail,
