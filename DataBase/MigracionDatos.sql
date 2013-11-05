@@ -72,8 +72,8 @@ INSERT INTO [SQUELA].[Profesional]
 	[Direccion],
 	[Telefono],
 	[Mail],
-	[FechaNacimiento]
-	-- [Matricula] NULL
+	[FechaNacimiento],
+	[Matricula]
 	-- [Baja] DEFAULT
 	-- [Sexo] NULL
 )
@@ -84,10 +84,13 @@ SELECT DISTINCT
 	[Medico_Direccion] AS Direccion,
 	[Medico_Telefono] AS Telefono,
 	[Medico_Mail] AS Mail,
-	[Medico_Fecha_Nac] AS FechaNacimiento
+	[Medico_Fecha_Nac] AS FechaNacimiento,
+	1 AS Matricula
 		
 FROM gd_esquema.Maestra
 WHERE Medico_Nombre IS NOT NULL
+
+UPDATE [SQUELA].[Profesional] SET [Matricula] = [ID_Profesional]
 
 --									--
 -- Migracion Tabla TipoEspecialidad --
@@ -133,3 +136,64 @@ SET IDENTITY_INSERT [SQUELA].[Especialidad] OFF
 --								--
 -- Migracion Tabla Compra       --
 --								--
+INSERT INTO [SQUELA].[Compra]
+(	
+	[ID_Afiliado], [Fecha]
+)
+SELECT DISTINCT [Afiliado].ID_Afiliado, [Compra_Bono_Fecha]
+	FROM gd_esquema.Maestra
+	JOIN [SQUELA].[Afiliado] ON [Afiliado].ID_TipoDocumento = 1 AND [Afiliado].Numero = [Paciente_Dni]
+	WHERE [Compra_Bono_Fecha] IS NOT NULL
+	GROUP BY [Afiliado].ID_Afiliado, [Compra_Bono_Fecha]
+	ORDER BY [Afiliado].ID_Afiliado, [Compra_Bono_Fecha]
+	
+	
+
+--								--
+-- Migracion Tabla BonoConsulta --
+--								--
+
+SET IDENTITY_INSERT [SQUELA].[BonoConsulta] ON
+
+INSERT INTO [SQUELA].[BonoConsulta]
+(
+	[ID_BonoConsulta],
+	[ID_Compra],
+	[ID_PlanMedico],
+	[ID_Comprador]
+)
+SELECT DISTINCT [Bono_Consulta_Numero] AS BonoConsulta
+	, [Compra].[ID_Compra] AS ID_Compra
+	, [Afiliado].[ID_PlanMedico] AS ID_PlanMedico
+	, [Afiliado].[ID_Afiliado] AS ID_Comprador
+	FROM gd_esquema.Maestra
+	JOIN [SQUELA].[Afiliado] ON [Afiliado].[ID_TipoDocumento] = 1 AND [Afiliado].[Numero] = [Paciente_Dni]
+	JOIN [SQUELA].[Compra] ON [Compra].[ID_Afiliado] = [Afiliado].ID_Afiliado AND [Compra].[Fecha] = [Compra_Bono_Fecha]
+	WHERE [Compra_Bono_Fecha] IS NOT NULL
+	AND [Bono_Consulta_Numero] IS NOT NULL
+	
+SET IDENTITY_INSERT [SQUELA].[BonoConsulta] OFF
+--								--
+-- Migracion Tabla BonoFarmacia --
+--								--
+
+SET IDENTITY_INSERT [SQUELA].[BonoFarmacia] ON
+
+INSERT INTO [SQUELA].[BonoFarmacia]
+(
+	[ID_BonoFarmacia],
+	[ID_Compra],
+	[ID_PlanMedico],
+	[ID_Comprador]
+)
+SELECT DISTINCT [Bono_Farmacia_Numero] AS BonoFarmacia
+	, [Compra].[ID_Compra] AS ID_Compra
+	, [Afiliado].[ID_PlanMedico] AS ID_PlanMedico
+	, [Afiliado].[ID_Afiliado] AS ID_Comprador
+	FROM gd_esquema.Maestra
+	JOIN [SQUELA].[Afiliado] ON [Afiliado].[ID_TipoDocumento] = 1 AND [Afiliado].[Numero] = [Paciente_Dni]
+	JOIN [SQUELA].[Compra] ON [Compra].[ID_Afiliado] = [Afiliado].ID_Afiliado AND [Compra].[Fecha] = [Compra_Bono_Fecha]
+	WHERE [Compra_Bono_Fecha] IS NOT NULL
+	AND [Bono_Farmacia_Numero] IS NOT NULL
+	
+SET IDENTITY_INSERT [SQUELA].[BonoFarmacia] OFF
